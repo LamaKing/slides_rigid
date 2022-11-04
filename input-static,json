@@ -1,0 +1,15 @@
+{
+    "cluster_shape": "circle",
+    "angle": {th},
+    "nbin": 100,
+    "sub_symm": "square",
+    "en_form": "gaussian",
+    "a": 0.6,
+    "b": 2.0,
+    "R": {R},
+    "sigma": 0.6,
+    "epsilon": 105,
+    "wd": 0.29,
+    "dtheta": 0.01,
+    "pos_cm": [0,0]
+}
