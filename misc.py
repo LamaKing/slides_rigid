@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os, shutil, json, sys
 from os.path import join as pjoin
 
-def plot_UC(ax, u, params={'ls': '--', 'color': 'tab:gray', 'lw': 1}):
+def plot_UC(ax, u, params={'ls': ':', 'color': 'tab:gray', 'lw': 1}):
     """Shortcut to plot the unit cell of the lattice"""
     BZ_corner = np.array([(n*u[0]+m*u[1])
                           for n,m in [[0,0], [1,0], [1,1], [0,1], [0,0]]
