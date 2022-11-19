@@ -33,7 +33,6 @@ def FTau_loop(F0, F1, dF,
             last_step = np.loadtxt(pjoin(cdir, 'out.dat'))[-1]
             print(('%25.15g '*3) % (Tau, Fx, Fy), ''.join(['%25.15g ' % f for f in last_step]), file=outlast)
             if update_conf:
-                # Set new one
                 inputs['pos_cm'], inputs['theta'] = [float(last_step[[2]]), float(last_step[[3]])], float(last_step[6])
             print('-' * 80, '\n')
         # Reset for inner circle

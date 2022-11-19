@@ -4,7 +4,7 @@ import os, shutil, json, sys
 from os.path import join as pjoin
 
 def plot_UC(ax, u, params={'ls': '--', 'color': 'tab:gray', 'lw': 1}):
-    """Shortcut to plot the Brillouin zone of the lattice"""
+    """Shortcut to plot the unit cell of the lattice"""
     BZ_corner = np.array([(n*u[0]+m*u[1])
                           for n,m in [[0,0], [1,0], [1,1], [0,1], [0,0]]
                          ])
@@ -42,6 +42,7 @@ def plot_BZ2d(ax, ws_verts, params={'ls': '--', 'color': 'tab:gray', 'lw': 1, 'f
     from matplotlib.patches import Polygon
     ws_cell = Polygon(ws_verts, **params)
     ax.add_patch(ws_cell)
+    ax.set_aspect('equal') # I can't think of a situation where you would want arbitrary distorion on the shape.
     return ax, ws_cell
 
 def plt_cosmetic(ax, xlabel='x', ylabel='y'):

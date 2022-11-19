@@ -31,6 +31,12 @@ def load_cluster(input_hex, angle=0, center=False):
     pos = rotate(pos, angle)
     return pos
 
+def get_rotomatr(angle):
+    """Get ACW rotation matrix of an angle [degree] """
+    roto_mtr = np.array([[np.cos(angle/180*np.pi), np.sin(angle/180*np.pi)],
+                         [-np.sin(angle/180*np.pi), np.cos(angle/180*np.pi)]])
+    return roto_mtr
+
 def rotate(pos, angle, c=[0,0]):
     """Rotate positions pos of angle [degree] with respect to center c (default 0,0)"""
     # Equivalent to EP below, but faster. Or should be! - AS
