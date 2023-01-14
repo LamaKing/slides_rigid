@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/string_method.py
+../string_method.py

@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/static_trasl_map.py
+../static_trasl_map.py

@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/static_roto_map.py
+../static_roto_map.py

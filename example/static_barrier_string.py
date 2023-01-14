@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/static_barrier_string.py
+../static_barrier_string.py

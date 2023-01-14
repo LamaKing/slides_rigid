@@ -76,7 +76,8 @@ def static_traslmap(pos, inputs, calc_en_f, name=None, log_propagate=True, debug
     it = 0
     for i1, dda1 in enumerate(np.linspace(da11, da12, nbin, endpoint=True)):
         for i2, dda2 in enumerate(np.linspace(da21, da22, nbin, endpoint=True)):
-            pos_cm =  np.dot([dda1, dda2], u_inv) # Go from relative space to real space
+            #pos_cm = np.dot([dda1, dda2], u_inv)
+            pos_cm = np.dot(u_inv, np.array([dda1, dda2]).T).T  # Go from relative space to real space
             e_pot, forces, torque = calc_en_f(pos + pos_cm, pos_cm, *en_params)
 
             # Print progress

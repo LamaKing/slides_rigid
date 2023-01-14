@@ -22,8 +22,8 @@ def FTau_loop(F0, F1, dF,
     print('Working in ', pwd)
 
     rcm0, theta0 = inputs['pos_cm'], inputs['theta']
-    update_conf = True
-    outlast = open('last.dat', 'w')
+    update_conf = False
+    outlast = open('last-FTau.dat', 'w')
     for Tau in np.arange(Tau0, Tau1, dTau):
         for F in np.arange(F0, F1, dF):
             print('--------- ON Tau,F=%15.8g%15.8g -----------' % (Tau,F))
@@ -35,7 +35,7 @@ def FTau_loop(F0, F1, dF,
             if update_conf:
                 inputs['pos_cm'], inputs['theta'] = [float(last_step[[2]]), float(last_step[[3]])], float(last_step[6])
             print('-' * 80, '\n')
-        # Reset for inner circle
+        # Reset for outer loop
         inputs['pos_cm'] = [float(rcm0[0]), float(rcm0[1])]
         inputs['theta'] = float(theta0)
     outlast.close()
@@ -55,10 +55,14 @@ if __name__ == "__main__":
     try:
         F0, F1, dF = ranges['F0'], ranges['F1'], ranges['dF']
         if 'thF' in ranges.keys(): thF = ranges['thF']
-    except KeyError: pass
+    except KeyError:
+        print('Could not set force range')
+        pass
     Tau0, Tau1, dTau = 0, 0, 1
     try:
         Tau0, Tau1, dTau = ranges['Tau0'], ranges['Tau1'], ranges['dTau']
-    except KeyError: pass
+    except KeyError:
+        print('Could not set torque range')
+        pass
 
     FTau_loop(F0, F1, dF, Tau0, Tau1, dTau, inputs)

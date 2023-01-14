@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/misc.py
+../misc.py

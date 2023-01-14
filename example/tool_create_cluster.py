@@ -1,1 +1,1 @@
-/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster/tool_create_cluster.py
+../tool_create_cluster.py

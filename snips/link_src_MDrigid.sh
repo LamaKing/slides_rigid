@@ -7,7 +7,7 @@ src_fname=( tool_create_cluster.py tool_create_substrate.py misc.py )
 if [[ $1 == "all" ]]
 then
         #src_fname=( ${src_fname[@]} static_maps/static_roto_map.py static_maps/static_trasl_map.py static_maps/static_barrier-string.py static_maps/string_method.py )
-        src_fname=( ${src_fname[@]} MD_rigid_rototrasl.py static_roto_map.py static_trasl_map.py static_rototrasl_map.py static_barrier_string.py string_method.py )
+        src_fname=( ${src_fname[@]} MD_rigid_rototrasl.py static_roto_map.py static_trasl_map.py static_rototrasl_map.py static_barrier_string.py string_method.py tool_reciprocal_space.py )
 fi
 
 force_opt=""

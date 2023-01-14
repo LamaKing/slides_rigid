@@ -52,7 +52,7 @@ def plt_cosmetic(ax, xlabel='x', ylabel='y'):
     ax.set_ylabel(ylabel)
     ax.set_aspect('equal')
 
-def handle_run(params, c_key, c_val, driver, move_fname=['out.dat']):
+def handle_run(params, c_key, c_val, driver, move_fname=[], outfname='out.dat'):
     """Change param file according to given key and value.
     Run the driver.
     Create a folder "key_value" according to key and value.
@@ -71,8 +71,9 @@ def handle_run(params, c_key, c_val, driver, move_fname=['out.dat']):
     pwd =  os.environ['PWD']
     print('Working in ', pwd)
 
+    if outfname not in move_fname: move_fname += [outfname]
     # Run
-    with open('out.dat', 'w') as outstream:
+    with open(outfname, 'w') as outstream:
         driver(params, name='', outstream=outstream)
 
     for cfname in move_fname:

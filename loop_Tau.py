@@ -19,16 +19,16 @@ def Tau_loop(Tau0, Tau1, dTau, inputs, update_conf=True):
     pwd =  os.environ['PWD']
     print('Working in ', pwd)
 
-    outlast = open('last.dat', 'w')
+    Fx, Fy = inputs['Fx'], inputs['Fy']
+    outlast = open('last-Tau.dat', 'w')
     for Tau in np.arange(Tau0, Tau1, dTau):
         print('--------- ON Tau=%15.8g -----------' % Tau)
         cdir = handle_run(inputs, 'Tau', float(Tau), MD_rigid) # for json cannot be numpy
         if update_conf:
             # Extract last config of current run
             last_step = np.loadtxt(pjoin(cdir, 'out.dat'))[-1]
-            print(('%25.15g '*1) % (Tau), ''.join(['%25.15g ' % f for f in last_step]), file=outlast)
-            if update_conf:
-                # Set new one
+            print(('%25.15g '*3) % (Tau, Fx, Fy), ''.join(['%25.15g ' % f for f in last_step]), file=outlast)
+            if update_conf: # Set next run
                 inputs['pos_cm'], inputs['theta'] = [float(last_step[[2]]), float(last_step[[3]])], float(last_step[6])
                 print('-' * 80, '\n')
         print('-' * 80, '\n')
@@ -41,6 +41,14 @@ if __name__ == "__main__":
     # -------- INPUTS --------
     with open(sys.argv[1]) as inj:
         inputs = json.load(inj)
+    with open(sys.argv[2]) as inj:
+        ranges = json.load(inj)
 
-    Tau0, Tau1, dTau = int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])
+    Tau0, Tau1, dTau = 0, 0, 1
+    try:
+        Tau0, Tau1, dTau = ranges['Tau0'], ranges['Tau1'], ranges['dTau']
+    except KeyError:
+        print('Could not set torque range')
+        pass
+
     Tau_loop(Tau0, Tau1, dTau, inputs)

@@ -43,11 +43,14 @@ def MD_rigid(inputs, outstream=sys.stdout, name=None, log_propagate=False, debug
         pos = load_cluster(input_cluster, theta)[:,:2]
     else: raise KeyError("No input for cluster (hex or np)")
 
+    test_cm = np.mean(pos, axis=0)
+    if not np.isclose(np.linalg.norm(test_cm - pos_cm), 0):
+        c_log.warning('Pos CM (%s) and input CM (%s) are different' % (str(test_cm), str(pos_cm)))
     N = pos.shape[0] # Size of the cluster
     c_log.info("Cluster N=%i start at (x,y)=(%.3g,%.3g), theta=%.3g)" % (N, *pos_cm, theta))
 
     #-------- SUBSTRATE ENERGY --------
-    _, calc_en_f, en_params = substrate_from_params(inputs)
+    _, calc_en_f, en_params = substrate_from_params(inputs) # ignore per-particle function
     c_log.info("%s sub parms: " % inputs['well_shape'] + " ".join(["%s" % str(i) for i in en_params]))
 
     #-------- MD params --
@@ -73,8 +76,8 @@ def MD_rigid(inputs, outstream=sys.stdout, name=None, log_propagate=False, debug
     if 'both_breaks' in inputs.keys(): both_breaks = bool(inputs['both_breaks'])
     break_omega, break_V = False, False
     omega_avg, vel_avg = 0, 0 # store average of omega and velox over given timesteps
-    avglen = 100 # timesteps
-    min_Nsteps = 1e30 # min steps for average. E.g. 1e5
+    avglen = 100 # timesteps for average
+    min_Nsteps = 1e30 # min steps
     omega_min, omega_max = -1, 1e30 # tolerance (>0) to consider the system stuck or depinned.
     vel_min, vel_max = -1, 1e30     # If not given, continue indefinitely: max huge, min <0
     rcm_max, theta_max = 1e30, 1e30

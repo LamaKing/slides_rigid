@@ -26,7 +26,8 @@ def save_xyz(pos, outfname='cluster.xyz', elem='X'):
 def load_cluster(input_hex, angle=0, center=False):
     """Load cluster form numpy file data. Optionally adjust CM and rotate."""
 
-    pos = np.loadtxt(input_hex)
+    #pos = np.loadtxt(input_hex)
+    pos = np.load(input_hex)
     if center: pos -= np.average(pos, axis=0 )
     pos = rotate(pos, angle)
     return pos
