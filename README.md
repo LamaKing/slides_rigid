@@ -1,64 +1,72 @@
-# Overdamped dynamics of CM of rigid cluster of colloids
 
-Define the geometry of substrate and cluster, system properties and then solve the equation of motion for the Centre of Mass (CM) of the cluster.
-```MD_angle.sh``` creates the cluster and calls the Langevin solver.
+<img width="636" alt="Untitled" src="https://user-images.githubusercontent.com/19472018/212551025-70228a51-1591-4c3c-b2cd-9002f92dfb49.png">
 
-### Substrate
-The lithographic patterns are approximated by Tanh function in X. Cao, E. Panizon, A. Vanossi, N. Manini, E. Tosatti, and C. Bechinger, Phys. Rev. E 103, 1 (2021).
-The substrate is defined by:
-  - the spacing ```R``` between the wells
-  - the well depththe ```epsilon```
-  - the well width ```a``` 
-  - the transition region width ```b```
-  - The ideal well is correctd by a shape factor ```wd``` (0.29 of R=5micron is a good bet).
+# Superlubric interface detector
 
-The symmetry implemented, as of now, are ```triangular``` and ```square```.
-There should be a Jupyter NB showing a bit how this substrate looks like and how the forces scale with the 
+Compute interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
+The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $(x_\mathrm{cm},y_\mathrm{cm})$
 
-### Cluster
-Hexagonal clusters are created by giving to ```tool_create_hexagons.py``` the lattice vectors a and b and the repetitions along each of them. 
-See the script description.
+## Substrate
+The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space. 
+The functions handling the substrate creation are in ```tool_create_substrate.py```.
+
+For a plane wave superposition, the substrate is defined by a suitable set of wave vectors, where the number of vectors defines the symmetry and length of vectors defines the spacing [VanossiPNAS].
+
+For a lattice of wells, the substrate is defined by the shape parameters of the well and the lattice vectors [CaoNatPhys, CaoPRE, CaoPRX]. This substrate can be decorated with a lattice.
+
+The parameters are specified in a JSON file.
+See Example/0-Substrate_types.ipynb for details.
+
+## Cluster
+The cluster is defined as a collection of points (optionally decorate with a basis) belonging to a given lattice.
+For convenience, there are functions returning clusters in regular shapses, e.g. rectangles, hexagons, circles, etc.
+The functions handling the substrate creation are in ```tool_create_substrate.py```.
+
+See example/1-Cluster_creation.ipynb for details.
+
+## Static Maps
+
+See example/2-Cluster_on_substrate.ipynb for details on the following functions.
+
+### Translations
+To explore the energy landscape of an adsorbate over a substrate as a function of the CM at fixed orientation, see ```static_trasl_map.py```
+#### Rotations
+To explore the energy landscape of an adsorbate over a substrate as a function of the imposed rotation $\theta$, at fixed CM, see ```static_roto_map.py```
+#### Roto-translations
+To search for the global minimum of an adosrbate, one needs to combine rotations and translation, and locate the energy minimum in the $(x_\mathrm{cm}, y_\mathrm{cm}, \theta)$ space. See ```static_rototrasl_map.py``` for details.
+
+## Dynamics Maps
+
+To go beyond rigid maps, there are two essential tools: compute the minimum energy path between two minimum or perform a molecular dynamics calculation under given translational and rotational drives $(F_x, F_y, \tau)$.
+
+### Barrier finding
+The barrier between two points in the configurational space $(x_\mathrm{cm}, y_\mathrm{cm}) at fixed orientation can be estimated be the string algorithm [], similar to the NEB methods.
+The ideal can be summarised like this: imagine the potential energy to be a hill landscape. Place a string between two points of the landscape and let it relax. The string would relax downhill until the gradient on the string vanishes, i.e. the string layes on the pass between the valleys and below the peaks.
+
+See example/3-Barrier_from_stirng.ipynb
+
+### Molecular dynamics 
+The script ```MD_rigid_rototrasl.py``` solve the equation of motion for the center of mass and orientation of the cluster in the overdamped regime (no interial term)
+#### Equations of motion
+In the overdamped limit, the equation of motion are the following first order equations:
+  
+$$ \gamma_{t} d\mathbf{r}/dt = (\mathbf{F}_{ext} - grad U) $$
+
+$$ \gamma_{r} d\theta/dt = (\tau_{ext} - dU/d\theta) $$
+  
+In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constants, $\gamma_t$ and $\gamma_r$, effectively sets how quickly the time flows. 
+Thus by lowering $\gamma$ one can "speed up" the simulations and match timescales similar to experiments.
 
 ## Units
-Base units of are:
-  - E in zj
-  - L in micron
+The model can be ragarded as adimensional.
+
+A coherent set of units useful to compare with experimental colloidal system is:
+  - energy in zJ
+  - length in $\mu\mathrm{m}$
   - mass in fKg
 
-It follows:
-  - F in fN
-  - torque in fN*ms
-  - t in ms
-  - gamma in fKg/ms
-
-## Equations of motion
-The ```script MD_rigid_rototrasl.py``` solves first order equations, i.e. fully overdamped dynamics with no interial term:
-  
-```dr/dt = (F_ext - grad U)/gamma_trasl```
-
-```dtheta/dt = (T_ext - dU/dtheta)/gamma_rot```
-  
-In this picture energy is not conserved (fully dissipated in the Langevin bath between timesteps) and the value of the dissipation constants, gamma_trasl and gamma_rot, effectively sets how quickly the time flows. Thus ms is the formal unit of time, but by lowering gamma we should be able to explore timescales similar to experiments.
-
-### The problem of gamma scaling
-How do we scale from the dissipation gamma of a single colloid to the one of the CM?
-For translations is easy: gamma_trasl = N gamma, where N is the number of colloids in the cluster.
-For the rotation is a bit more complicated. And we lack a clear understanding of how the rotation actuated by the magnetic field in the experiments (or at least I do). So we should just reproduce the experimental scaling of omega = dtheta/dt for increasing torque T_ext over a flat substrate, dU/dtheta=0.
-
-It looked like it scaled as N^-3/2, but it's now closer N^-2 (or N^-1/2 - N^-1 for T_ext/N). There are some LaTex notes somewhere deriving how you could get the different scaling. The N^-2 is the most "physically sound" one: integrate of the torque generated by the dissipation of each colloid ```sum_i r_i*(-gamma rdot_i)```.
-
-Now we skip all the geometry details to keep the dissapation reasonably small: gamma_trasl = N gamma and gamma_roto = N^2 gamma. 
-If you were to really use Stokes formula and geometry, summing over r^2, it gamma_roto would be large (10^6 even for N<10^3). 
-This would lead to a very slow rotational dynamics. 
-
-
-# TODO
-  - Redo testing with new scaling factor:
-    * Translation only: F1s
-    * Flat substrate omega scaling
-    * Critical torque scaling with N
-    * PRE directional locking: thetao=-3.4 thetad=26.6
-  - Add testing folder. Possibly only inputs and analysis if outputs are too big.
-  - Roto-trasl coupling: take PRE dir locking and drive the sys in perpendicular direction. Measure Fs. Fix F<Fs and add torque. How does the response change?
-  - Critical torque behaviour for different lattice symmetry and mismatch.
-# rigid_cluster
+From which follows:
+  - force in fN
+  - torque in fN $\cdot \mu \mathrm{m}$
+  - time in ms
+  - translational damping constant $\gamma$ in fKg/ms
