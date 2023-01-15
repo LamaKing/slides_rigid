@@ -30,9 +30,9 @@ See example/2-Cluster_on_substrate.ipynb for details on the following functions.
 
 ### Translations
 To explore the energy landscape of an adsorbate over a substrate as a function of the CM at fixed orientation, see ```static_trasl_map.py```
-#### Rotations
+### Rotations
 To explore the energy landscape of an adsorbate over a substrate as a function of the imposed rotation $\theta$, at fixed CM, see ```static_roto_map.py```
-#### Roto-translations
+### Roto-translations
 To search for the global minimum of an adosrbate, one needs to combine rotations and translation, and locate the energy minimum in the $(x_\mathrm{cm}, y_\mathrm{cm}, \theta)$ space. See ```static_rototrasl_map.py``` for details.
 
 ## Dynamics Maps
@@ -50,11 +50,16 @@ The script ```MD_rigid_rototrasl.py``` solve the equation of motion for the cent
 #### Equations of motion
 In the overdamped limit, the equation of motion are the following first order equations:
   
-$$ \gamma_{t} d\mathbf{r}/dt = (\mathbf{F}_{ext} - grad U) $$
+$$ \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) $$
 
-$$ \gamma_{r} d\theta/dt = (\tau_{ext} - dU/d\theta) $$
-  
-In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constants, $\gamma_t$ and $\gamma_r$, effectively sets how quickly the time flows. 
+$$ \gamma_{r} \frac{d\theta}{dt} = (\tau_{ext} - \frac{dU}{d\theta}) $$
+
+The dissipation constants of the CM for a cluster of $N$ particles are linked the "particle-like" damping constant $\gamma$ by
+$\gamma_t = N \gamma$
+and
+$\gamma_r = \gamma \sum_i r_i^2 $, where $r_i$ is the position of the $i$-th particle with respect to the center of mass.
+
+In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constant $\gamma$ effectively sets how quickly the time flows. 
 Thus by lowering $\gamma$ one can "speed up" the simulations and match timescales similar to experiments.
 
 ## Units
