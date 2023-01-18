@@ -75,3 +75,5 @@ From which follows:
   - torque in fN $\cdot \mu \mathrm{m}$
   - time in ms
   - translational damping constant $\gamma$ in fKg/ms
+
+## References
