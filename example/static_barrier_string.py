@@ -1,1 +1,1 @@
-../static_barrier_string.py
+../src/static_barrier_string.py

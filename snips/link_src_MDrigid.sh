@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#src_fld=/Users/andreasilva/Documents/Post_doc-SISSA/rotating_clusters/DYNAMICS/
-#src_fld=/Users/andreasilva/Documents/Post_doc-SISSA/software/MD_rigid_cluster
-src_fld=/Users/andreasilva/Documents/Post_doc-SISSA/software/rigid_cluster
+src_fld=/PATH/TO/SOURCE/OF/rigid_cluster
 src_fname=( tool_create_cluster.py tool_create_substrate.py misc.py )
 if [[ $1 == "all" ]]
 then

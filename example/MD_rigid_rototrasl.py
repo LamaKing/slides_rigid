@@ -1,1 +1,1 @@
-../MD_rigid_rototrasl.py
+../src/MD_rigid_rototrasl.py

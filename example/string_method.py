@@ -1,1 +1,1 @@
-../string_method.py
+../src/string_method.py

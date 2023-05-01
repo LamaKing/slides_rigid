@@ -1,1 +1,1 @@
-../tool_create_substrate.py
+../src/tool_create_substrate.py

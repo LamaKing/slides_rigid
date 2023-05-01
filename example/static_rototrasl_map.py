@@ -1,1 +1,1 @@
-../static_rototrasl_map.py
+../src/static_rototrasl_map.py

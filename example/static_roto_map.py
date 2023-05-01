@@ -1,1 +1,1 @@
-../static_roto_map.py
+../src/static_roto_map.py
