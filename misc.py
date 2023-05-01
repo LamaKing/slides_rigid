@@ -71,7 +71,8 @@ def handle_run(params, c_key, c_val, driver, move_fname=[], outfname='out.dat'):
     pwd =  os.environ['PWD']
     print('Working in ', pwd)
 
-    if outfname not in move_fname: move_fname += [outfname]
+    #if outfname not in move_fname: move_fname += [outfname]
+    #print('moving', move_fname)
     # Run
     with open(outfname, 'w') as outstream:
         driver(params, name='', outstream=outstream)
