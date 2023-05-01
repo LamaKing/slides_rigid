@@ -1,1 +1,6 @@
-.. mdinclude:: ../../README.md
+Intro
+======
+
+```{include} ../../README.md
+:relative-images:
+```
