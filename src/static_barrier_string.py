@@ -53,8 +53,10 @@ def static_barrier(pos, inputs, calc_en_f, name=None, log_propagate=True, debug=
     if 'Nsteps' in inputs.keys(): Nsteps = inputs['Nsteps']
     Npt = 100 # number of subdivisions of the path connecting a and b
     if 'Npt' in inputs.keys(): Npt = inputs['Npt']
-    L = Path(inputs['p0'], inputs['p1'], pos, Npt, fix_ends=False)               # initalise the path
-    V = PotentialPathAnalyt(L, calc_en_f, en_params)      # potential along the path
+    fix_ends = False
+    if 'fix_ends' in inputs.keys(): fix_ends = bool(inputs['fix_ends']) # are the given end of the path free to move?
+    L = Path(inputs['p0'], inputs['p1'], pos, Npt, fix_ends=fix_ends) # initalise the path
+    V = PotentialPathAnalyt(L, calc_en_f, en_params)  # potential along the path
     c_log.info("Relax string of %i points in %i stesp" % (Npt, Nsteps))
     data = np.zeros((Npt, 6))
 
