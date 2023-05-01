@@ -107,6 +107,10 @@ def MD_rigid(inputs, outstream=sys.stdout, name=None, log_propagate=False, debug
     # Aplitude of random numbers. Translational follows nicely from CLT, rotational is assumed from A. E. Filippov, M. Dienwiebel, J. W. M. Frenken, J. Klafter, and M. Urbakh, Phys. Rev. Lett. 100, 046102 (2008).
     brandt, brandr = np.sqrt(2*T*etat_eff), np.sqrt(2*T*etar_eff)
     kBTroom = 4.069767441860465 #zJ
+    seed = 12345
+    if 'seed' in inputs.keys(): seed = inputs['seed']
+    np.random.seed(seed)
+    c_log.info("Random noise from seed %i" % seed)
     c_log.info("Number of particles %i Eta trasl %.5g Eta tras eff %.5g Eta roto eff %.5g Ratio roto/tras %.5g kBT=%.3g (kBT/kBTroom=%.3g)" % (N, eta, etat_eff, etar_eff, etar_eff/etat_eff, T, T/kBTroom))
 
     c_log.info("Tau = %.4g fN*micron (Tau/N=%.4g)" % (Tau, Tau/N))
