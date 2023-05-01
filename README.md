@@ -54,7 +54,9 @@ See example/molecular_dynamics for an example of a system depinning under a cons
 #### Equations of motion
 In the overdamped limit, the equation of motion are the following first order equations:
   
-$$ \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) $$
+$$ 
+    \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) 
+$$
 
 $$ \gamma_{r} \frac{d\theta}{dt} = (\tau_{ext} - \frac{dU}{d\theta}) $$
 
