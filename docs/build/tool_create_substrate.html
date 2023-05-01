@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Substrate &mdash; MD_rigid 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cluster" href="tool_create_cluster.html" />
+    <link rel="prev" title="Modules" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MD_rigid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#tools">Tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Substrate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_en_gaussian"><code class="docutils literal notranslate"><span class="pre">calc_en_gaussian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_en_sin"><code class="docutils literal notranslate"><span class="pre">calc_en_sin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_en_sin_tri"><code class="docutils literal notranslate"><span class="pre">calc_en_sin_tri()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_en_tanh"><code class="docutils literal notranslate"><span class="pre">calc_en_tanh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_matrices_bvect"><code class="docutils literal notranslate"><span class="pre">calc_matrices_bvect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_matrices_square"><code class="docutils literal notranslate"><span class="pre">calc_matrices_square()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.calc_matrices_triangle"><code class="docutils literal notranslate"><span class="pre">calc_matrices_triangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.get_ks"><code class="docutils literal notranslate"><span class="pre">get_ks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.particle_en_gaussian"><code class="docutils literal notranslate"><span class="pre">particle_en_gaussian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.particle_en_sin"><code class="docutils literal notranslate"><span class="pre">particle_en_sin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.particle_en_sin_tri"><code class="docutils literal notranslate"><span class="pre">particle_en_sin_tri()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.particle_en_tanh"><code class="docutils literal notranslate"><span class="pre">particle_en_tanh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool_create_substrate.substrate_from_params"><code class="docutils literal notranslate"><span class="pre">substrate_from_params()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tool_create_cluster.html">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string_method.html">String method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#static">Static</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dynamics">Dynamics</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MD_rigid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">Substrate</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tool_create_substrate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tool_create_substrate">
+<span id="substrate"></span><h1>Substrate<a class="headerlink" href="#module-tool_create_substrate" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_en_gaussian">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_en_gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_en_gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on CM.</p>
+<p>See corresponding particle function for details on parameters.</p>
+<p>Return total energy (scalar) force (2d vector) torque (scalar).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_en_sin">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_en_sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_en_sin" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on CM.</p>
+<p>Substrate energy is modelled as sum of plane waves defined by the reciprocal vecotrs ks.</p>
+<p>See corresponding particle function for details on parameters.</p>
+<p>Return total energy (scalar) force (2d vector) torque (scalar).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_en_sin_tri">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_en_sin_tri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_en_sin_tri" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on CM.</p>
+<p>!!! Coefficients are for triangular lattice only !!!
+Substrate energy is modelled as sum of three plane waves.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_en_tanh">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_en_tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ww</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_en_tanh" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on CM.</p>
+<p>Substrate energy is modelled as a lattice of tanh-shaped wells.</p>
+<p>See corresponding particle function for details on parameters.</p>
+<p>Return total energy (scalar) force (2d vector) torque (scalar).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_matrices_bvect">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_matrices_bvect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_matrices_bvect" title="Permalink to this definition"></a></dt>
+<dd><p>Metric matrices from primitive lattice vectors b1, b2.</p>
+<p>Return 2x2 matrices to map to unit cell (u) and inverse (u_inv), back to real space.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_matrices_square">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_matrices_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_matrices_square" title="Permalink to this definition"></a></dt>
+<dd><p>Metric matrices of square lattice of spacing R.</p>
+<p>Return 2x2 matrices to map to unit cell (u) and inverse (u_inv), back to real space.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.calc_matrices_triangle">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">calc_matrices_triangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.calc_matrices_triangle" title="Permalink to this definition"></a></dt>
+<dd><p>Metric matrices of triangular lattice of spacing R.</p>
+<p>Return 2x2 matrices to map to unit cell (u) and inverse (u_inv), back to real space.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.gaussian">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.gaussian" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.get_ks">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">get_ks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.get_ks" title="Permalink to this definition"></a></dt>
+<dd><p>Compute wave vectors k of interfering plane waves</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.particle_en_gaussian">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">particle_en_gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.particle_en_gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on each particle.</p>
+<p>Substrate energy is modelled as a lattice of gaussian-shaped wells.</p>
+<p>Inputs are:
+- pos: position of particles in rigid cluster, as (N,2) array.
+- pos_torque: reference point (1,2 array) to compute the torque (usually CM).
+- basis: list of position of the substrate basis (N,2 array).</p>
+<p>Well specific inputs (usually passed as <a href="#id1"><span class="problematic" id="id2">*</span></a>en_input):
+- a, b: beginning and end of tempered region (W=0 for x&gt;b).
+- sigma: width of the gaussian.
+- epsilon: depth of the well.
+- u, u_inv: matrices to map to subsrtate unit cell (see calc_matrices_bvect)</p>
+<p>Returns (for each particle) energy (N array), force (N,2), torque (N)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.particle_en_sin">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">particle_en_sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.particle_en_sin" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on each particle.</p>
+<p>Substrate energy is modelled as sum of plane waves defined by the reciprocal vecotrs ks.</p>
+<p>Inputs are:
+- pos: position of particles in rigid cluster, as (N,2) array.
+- pos_torque: reference point (1,2 array) to compute the torque (usually CM).
+- basis: list of position of the substrate basis (N,2 array).</p>
+<p>Well specific inputs (usually passed as <a href="#id3"><span class="problematic" id="id4">*</span></a>en_input):
+- ks: list of wavevector generating the potential.
+- epsilon: depth of the potential.</p>
+<p>Returns (for each particle) energy (N array), force (N,2), torque (N)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.particle_en_sin_tri">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">particle_en_sin_tri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.particle_en_sin_tri" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on each particle.</p>
+<p>!!! Coefficients are for triangular lattice only !!!
+Substrate energy is modelled as sum of three plane waves.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.particle_en_tanh">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">particle_en_tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ww</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_inv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.particle_en_tanh" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate energy, forces and torque on each particle.</p>
+<p>Substrate energy is modelled as a lattice of tanh-shaped wells.</p>
+<p>Inputs are:
+- pos: position of particles in rigid cluster, as (N,2) array.
+- pos_torque: reference point (1,2 array) to compute the torque (usually CM).
+- basis: list of position of the substrate basis (N,2 array).</p>
+<p>Well specific inputs (usually passed as <a href="#id5"><span class="problematic" id="id6">*</span></a>en_input):
+- a, b: beginning and end of tanh well (W=-epsilon for r&lt;a, W=0 for x&gt;b).
+- ww: shape factor for the tanh potential.
+- epsilon: depth of the well.
+- u, u_inv: matrices to map to subsrtate unit cell (see calc_matrices_bvect)</p>
+<p>Returns (for each particle) energy (N array), force (N,2), torque (N)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool_create_substrate.substrate_from_params">
+<span class="sig-prename descclassname"><span class="pre">tool_create_substrate.</span></span><span class="sig-name descname"><span class="pre">substrate_from_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool_create_substrate.substrate_from_params" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise a substrate from a parameter dictionary (usually from JSON file)</p>
+<p>Returns the functions computing the particle-wise and total energy, and the list of potential-specific paramters to pass to these functions.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tool_create_cluster.html" class="btn btn-neutral float-right" title="Cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andrea Silva.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

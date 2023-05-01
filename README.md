@@ -4,7 +4,7 @@
 # Superlubric interface detector
 
 Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
-The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $(x_\mathrm{cm},y_\mathrm{cm})$
+The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $x_\mathrm{cm}, y_\mathrm{cm}$
 
 ## Substrate
 The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space. 
@@ -54,9 +54,7 @@ See example/molecular_dynamics for an example of a system depinning under a cons
 #### Equations of motion
 In the overdamped limit, the equation of motion are the following first order equations:
   
-$$ 
-    \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) 
-$$
+$$ \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) $$
 
 $$ \gamma_{r} \frac{d\theta}{dt} = (\tau_{ext} - \frac{dU}{d\theta}) $$
 
