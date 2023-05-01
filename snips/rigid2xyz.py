@@ -9,8 +9,9 @@ import argparse
 from tool_create_cluster import rotate
 from tool_create_substrate import substrate_from_params
 
+
 if __name__ == "__main__":
-    
+
     #-------------------------------------------------------------------------------
     # Argument parser
     #-------------------------------------------------------------------------------
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     posfname = args.posfname
     outfname = args.outfname
     inputfname = args.inputfname
-    nskip = args.nskip 
+    nskip = args.nskip
 
 
     print('Load positions %s, trajectory %s and sys info %s' % (posfname, outfname, inputfname), file=sys.stderr)

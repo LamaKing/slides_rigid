@@ -5,9 +5,7 @@ from os.path import join as pjoin
 from time import time
 import numpy as np
 
-def get_loop_lasts(F0, F1, dF,
-                   Tau0, Tau1, dTau,
-                   thF=0, avg_len=100, method='average'):
+def get_loop_lasts(F0, F1, dF, Tau0, Tau1, dTau, thF=0, avg_len=100, method='average'):
     """Loop over values of Tau form Tau0 to Tau1 in steps dTau
 
     Update config concatenates pos cm and theta between runs"""

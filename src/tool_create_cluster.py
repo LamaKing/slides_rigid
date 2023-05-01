@@ -3,6 +3,10 @@
 import sys
 import numpy as np
 
+"""
+Function to create finite-size flakes from lattices.
+"""
+
 def calc_cluster_langevin(eta, pos):
     """Compute the effective translational and rotational damping acting on a CM of a cluster of N particles"""
 

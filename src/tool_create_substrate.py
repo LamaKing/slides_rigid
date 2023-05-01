@@ -2,6 +2,11 @@ import json
 import numpy as np
 from numpy import pi, sqrt
 
+
+"""
+Functions to create substrate potentials
+"""
+
 # --- calcolates simple matrix for mapping clusters colloids into primitive cell and viceversa.
 # Square lattice matrix
 def calc_matrices_square(R):
