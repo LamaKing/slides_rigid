@@ -190,7 +190,22 @@ def calc_en_gaussian(pos, pos_torque, basis, a, b, sigma, epsilon, u, u_inv):
 # n, c_n, alpha_n = 5, 2, 0 # Qausi-cristal
 # n, c_n, alpha_n = 6, 4/np.sqrt(3), -pi/6
 def get_ks(R, n, c_n, alpha_n):
-    """Compute wave vectors k of interfering plane waves"""
+    """Compute wave vectors k of interfering plane waves
+
+    Coefficients for reciprical space
+    from Vanossi, Manini, Tosatti www.pnas.org/cgi/doi/10.1073/pnas.1213930109 PNAS∣October 9, 2012∣vol. 109∣no. 41∣16429–16433
+
+    Lines: n, c_n, alpha_n = 2, 1, 0
+
+    Triangular: n, c_n, alpha_n = 3, 4/3, 0
+
+    Square: n, c_n, alpha_n = 4, np.sqrt(2), pi/4
+
+    Quasi-crystal 5-fold sym: n, c_n, alpha_n = 5, 2, 0
+
+    Quasi-crystal 6-fold sym: n, c_n, alpha_n = 6, 4/np.sqrt(3), -pi/6
+
+"""
     return np.array([c_n*pi/R*np.array([np.cos(2*pi/n*l+alpha_n), np.sin(2*pi/n*l+alpha_n)])
                      for l in range(n)])
 
