@@ -75,7 +75,7 @@ Thus by lowering $\gamma$ one can "speed up" the simulations and match timescale
 ## Units
 The model can be ragarded as adimensional.
 
-A coherent set of units useful to compare with experimental colloidal system is:
+A coherent set of units useful to compare with experimental colloidal system [2,3] is:
   - energy in zJ
   - length in $\mu\mathrm{m}$
   - mass in fKg
