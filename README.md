@@ -1,5 +1,5 @@
 
-<img width="636" alt="Untitled" src="https://user-images.githubusercontent.com/19472018/212551025-70228a51-1591-4c3c-b2cd-9002f92dfb49.png">
+<img width="636" alt="Untitled" src="docs/source/logo.png">
 
 # Superlubric interface detector
 
@@ -7,7 +7,7 @@ Compute the interlocking potential between a periodic substrate and a finite-siz
 The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $x_\mathrm{cm}, y_\mathrm{cm}$
 
 ## Substrate
-The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space. 
+The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space.
 The functions handling the substrate creation are in ```tool_create_substrate.py```.
 
 For a plane wave superposition, the substrate is defined by a suitable set of wave vectors, where the number of vectors defines the symmetry and length of vectors defines the spacing [1].
@@ -46,14 +46,14 @@ The ideal can be summarised like this: imagine the potential energy to be a hill
 
 See example/3-Barrier_from_stirng.ipynb
 
-### Molecular dynamics 
+### Molecular dynamics
 The script ```MD_rigid_rototrasl.py``` solve the equation of motion for the center of mass and orientation of the cluster in the overdamped regime (no interial term).
 
 See example/molecular_dynamics for an example of a system depinning under a constant force and torque.
 
 #### Equations of motion
 In the overdamped limit, the equation of motion are the following first order equations:
-  
+
 $$ \gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U) $$
 
 $$ \gamma_{r} \frac{d\theta}{dt} = (\tau_{ext} - \frac{dU}{d\theta}) $$
@@ -63,7 +63,7 @@ $\gamma_t = N \gamma$
 and
 $\gamma_r = \gamma \sum_i r_i^2 $, where $r_i$ is the position of the $i$-th particle with respect to the center of mass.
 
-In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constant $\gamma$ effectively sets how quickly the time flows. 
+In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constant $\gamma$ effectively sets how quickly the time flows.
 Thus by lowering $\gamma$ one can "speed up" the simulations and match timescales similar to experiments.
 
 ## Units

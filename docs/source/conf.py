@@ -34,11 +34,11 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     #'sphinx_md',
-    #'sphinx_mdinclude',
-    'myst_parser',
+    'sphinx_mdinclude',
+    #'myst_parser',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.imgmath',
-    'sphinx_math_dollar',
+    #'sphinx_math_dollar',
     'sphinx.ext.mathjax',
     "nbsphinx"
 ]
