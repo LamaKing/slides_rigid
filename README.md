@@ -6,6 +6,12 @@
 Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
 The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $x_\mathrm{cm}, y_\mathrm{cm}$
 
+This package is a collection of functions implementing the above physical system and automating routines usually needed to study the static, dynamics and scaling laws of friction at nanoscale interfaces.
+This software was developed at SISSA, Trieste, Italy in the group of Prof.
+Erio Tosatti and Andrea Vanossi and based on the experiments by Xin Cao and Clemens Bechinger at Univeristy of Konstanz, Germany.
+For any question/support contanct `Andrea Silva <ansilva@sissa.it>`_.
+
+
 ## Substrate
 The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space.
 The functions handling the substrate creation are in ```tool_create_substrate.py```.
