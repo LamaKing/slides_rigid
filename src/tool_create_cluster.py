@@ -370,8 +370,7 @@ def params_from_ASE(ase_geom, cut_z=0, tol=0.9):
       c d
     Positions are flattend out: (x,y) from (x,y,z)
 
-    Return parameters dictionary and list of z coordinates considered
-    """
+    Return parameters dictionary and list of z coordinates considered"""
 
     # Extarct 2D sys
     cell2d = ase_geom.cell.array[[0,1], :2]
@@ -398,8 +397,8 @@ def params_from_poscar(poscar_fname, cut_z=0):
 
     Use ASE to read.
 
-    Return parameters file.
-    """
+    Return parameters file."""
+
     import ase
     ase_geom = ase.io.read(poscar_fname)
     return params_from_ASE(ase_geom, cut_z)
