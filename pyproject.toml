@@ -11,7 +11,7 @@ authors = [
 description = "Statics and dynamics of 2D rigid cluster over a substrate. The degrees of freedom are the CM position and orientation."
 readme = "README.md"
 requires-python = ">=3.10"
-keywords = "simulation  physics  friction nanoscale-molecular-dynamics"
+keywords = ["simulation", "physics", "friction", "nanoscale-molecular-dynamics"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Development Status :: 4 - Beta",
