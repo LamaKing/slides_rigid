@@ -11,6 +11,15 @@ authors = [
 description = "Statics and dynamics of 2D rigid cluster over a substrate. The degrees of freedom are the CM position and orientation."
 readme = "README.md"
 requires-python = ">=3.10"
+keywords = "simulation  physics  friction nanoscale-molecular-dynamics"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta"
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
 
 [project.urls]
 "Homepage" = "https://rigid-cluster.readthedocs.io/en/latest/index.html"
