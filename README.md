@@ -1,5 +1,5 @@
 
-<img width="636" alt="Untitled" src="docs/source/logo.png">
+![logo](https://github.com/LamaKing/slide_rigid/assets/19472018/0c249a09-ec85-442b-9c57-5fb7b12e69b8)
 
 # Superlubric interface detector
 
