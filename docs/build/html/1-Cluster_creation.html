@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cluster creation &mdash; MD_rigid 0.1 documentation</title>
+  <title>Cluster creation &mdash; SLIDE 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
@@ -18,9 +18,13 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Put a cluster on a substrate" href="2-Cluster_on_substrate.html" />
+    <link rel="prev" title="Substrates" href="0-Substrate_types.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +36,8 @@
           
           
           <a href="index.html" class="icon icon-home">
-            MD_rigid
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,7 +47,32 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0-Substrate_types.html">Substrates</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cluster creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Set-up-lattice-and-size">Set up lattice and size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Single-shape">Single shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Do-all-shapes">Do all shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Test-loading-from-params">Test loading from params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Load-from-POSCAR">Load from POSCAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Cluster-from-Polygon-shape">Cluster from Polygon shape</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Circle">Circle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Square">Square</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#L-shape">L-shape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Show-polygon">Show polygon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Mask-lattice-with-polygon">Mask lattice with polygon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Polygon-from-params">Polygon from params</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="2-Cluster_on_substrate.html">Put a cluster on a substrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-Barrier_from_stirng.html">Barrier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-Scaling_laws.html">Scaling laws of translational static friction</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
@@ -52,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">MD_rigid</a>
+          <a href="index.html">SLIDE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -60,6 +90,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="examples.html">Examples</a></li>
       <li class="breadcrumb-item active">Cluster creation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/1-Cluster_creation.ipynb.txt" rel="nofollow"> View page source</a>
@@ -72,7 +103,7 @@
              
   <section id="Cluster-creation">
 <h1>Cluster creation<a class="headerlink" href="#Cluster-creation" title="Permalink to this heading"></a></h1>
-<p>Let us go throught the various ways you can define a cluster. In the end you only need <img class="math" src="_images/math/3bfb3a64189a14b2704f4610827762d5e3145114.png" alt="N"/> 2D vectors, i.e. the positions of the particles. Depending on what you want to do (your protocol and aim), there might be better ways to obtain these.</p>
+<p>Let us go throught the various ways you can define a cluster. In the end you only need <span class="math notranslate nohighlight">\(N\)</span> 2D vectors, i.e. the positions of the particles. Depending on what you want to do (your protocol and aim), there might be better ways to obtain these.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -93,8 +124,8 @@
 </div>
 <section id="Set-up-lattice-and-size">
 <h2>Set up lattice and size<a class="headerlink" href="#Set-up-lattice-and-size" title="Permalink to this heading"></a></h2>
-<p>Define a parent lattice: the cluster will be a (connected) subset of points of this lattice. The lattice is defined in a <code class="docutils literal notranslate"><span class="pre">.hex</span></code> file containing: - number of repetitions <img class="math" src="_images/math/1204b88f1c17f1077c4d3ce7d1dec66cb7813eba.png" alt="N_1"/>, <img class="math" src="_images/math/8aec35524c4ea4e27ba5a7254cd46df5445e4bf2.png" alt="N_2"/> along the two lattice directions; - the lattice vectors <img class="math" src="_images/math/77b94dacff7a7a82c4b4e37e2168e88d51bc8058.png" alt="\bf{a}_1"/>, <img class="math" src="_images/math/91de2c23b46f2bff84039a961cc9737b4b8fc5cf.png" alt="\bf{a}_2"/>.</p>
-<p>This file is loaded by the functions creating different shapes: the lattice is created up to <img class="math" src="_images/math/1204b88f1c17f1077c4d3ce7d1dec66cb7813eba.png" alt="N_1"/>, <img class="math" src="_images/math/8aec35524c4ea4e27ba5a7254cd46df5445e4bf2.png" alt="N_2"/> and then cut according to the shape, e.g. for a circle the distance of the lattice point <img class="math" src="_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> from the origin <img class="math" src="_images/math/8d47777d070e3b1ae6a9ea0d4918309bc8c942fe.png" alt="R_i"/> is less than the radius <img class="math" src="_images/math/71fff4f91437ce339c0ee199dbcc591b616fd5aa.png" alt="R=|| N_1 \bf{a}_1 + N_2 \bf{a_2}||"/></p>
+<p>Define a parent lattice: the cluster will be a (connected) subset of points of this lattice. The lattice is defined in a <code class="docutils literal notranslate"><span class="pre">.hex</span></code> file containing: - number of repetitions <span class="math notranslate nohighlight">\(N_1\)</span>, <span class="math notranslate nohighlight">\(N_2\)</span> along the two lattice directions; - the lattice vectors <span class="math notranslate nohighlight">\(\bf{a}_1\)</span>, <span class="math notranslate nohighlight">\(\bf{a}_2\)</span>.</p>
+<p>This file is loaded by the functions creating different shapes: the lattice is created up to <span class="math notranslate nohighlight">\(N_1\)</span>, <span class="math notranslate nohighlight">\(N_2\)</span> and then cut according to the shape, e.g. for a circle the distance of the lattice point <span class="math notranslate nohighlight">\(i\)</span> from the origin <span class="math notranslate nohighlight">\(R_i\)</span> is less than the radius <span class="math notranslate nohighlight">\(R=|| N_1 \bf{a}_1 + N_2 \bf{a_2}||\)</span></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -303,7 +334,7 @@ Cluster circle of size N=307
 <h2>Load from POSCAR<a class="headerlink" href="#Load-from-POSCAR" title="Permalink to this heading"></a></h2>
 <p>To model real materials, it is convenient to have an interface to other formats. A useful one is <a class="reference external" href="https://www.vasp.at/wiki/index.php/POSCAR">VASP POSCAR</a> file, since it containes the lattice and basis, which is all we need.</p>
 <p>You can load a geometry from a poscar using the <code class="docutils literal notranslate"><span class="pre">params_from_poscar</span></code> function. The function returns the dictionary parameters that can then be used by other functions to create a cluster.</p>
-<p>Since we deal with 2D systems, the POSCAR has to contain the information in the right way: - relevant 2D periodicity should be in first two lattice vectors <img class="math" src="_images/math/efc43ebac1893d25ad92d5537ce4f9558792eac3.png" alt="\mathbf{a},\mathbf{b}"/>, i.e. <img class="math" src="_images/math/637314a6890dfe3c37b8731f2f4bcae0ae8a9ff6.png" alt="\mathbf{c}\propto (0,0,1)"/> - all information on <img class="math" src="_images/math/8d051150f8669295ecdbe92367941012175a824d.png" alt="z"/> component of basis vectors will be lost: the whole geometry is projected to the 2D plane. You can select a z coordinate to cut the geometry, but the best practice would be to do it outside.</p>
+<p>Since we deal with 2D systems, the POSCAR has to contain the information in the right way: - relevant 2D periodicity should be in first two lattice vectors <span class="math notranslate nohighlight">\(\mathbf{a},\mathbf{b}\)</span>, i.e. <span class="math notranslate nohighlight">\(\mathbf{c}\propto (0,0,1)\)</span> - all information on <span class="math notranslate nohighlight">\(z\)</span> component of basis vectors will be lost: the whole geometry is projected to the 2D plane. You can select a z coordinate to cut the geometry, but the best practice would be to do it outside.</p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">params_from_poscar</span></code> is a wrapper of <code class="docutils literal notranslate"><span class="pre">params_from_ASE</span></code>, if you are alrady working in a python environemnt, you don’t need to save a file, use the second function. Hence, you need a working installation of <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a> to use this function .</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -613,12 +644,15 @@ Cluster circle of size N=4057
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="0-Substrate_types.html" class="btn btn-neutral float-left" title="Substrates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2-Cluster_on_substrate.html" class="btn btn-neutral float-right" title="Put a cluster on a substrate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Andrea Silva.</p>
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

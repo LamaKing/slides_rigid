@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intro &mdash; MD_rigid 0.1 documentation</title>
+  <title>Intro &mdash; SLIDE 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,11 +17,13 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Modules" href="modules.html" />
-    <link rel="prev" title="Superlubric interface detector" href="index.html" /> 
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Superlubric interface design" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +35,8 @@
           
           
           <a href="index.html" class="icon icon-home">
-            MD_rigid
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,7 +47,28 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Intro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substrate">Substrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cluster">Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#static-maps">Static Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translations">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotations">Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roto-translations">Roto-translations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamics-maps">Dynamics Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#barrier-finding">Barrier finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#molecular-dynamics">Molecular dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#equations-of-motion">Equations of motion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#units">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
@@ -54,7 +78,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">MD_rigid</a>
+          <a href="index.html">SLIDE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -74,21 +98,110 @@
              
   <section id="intro">
 <h1>Intro<a class="headerlink" href="#intro" title="Permalink to this heading"></a></h1>
-<img alt="_images/logo.png" src="_images/logo.png" />
+<section id="substrate">
+<h2>Substrate<a class="headerlink" href="#substrate" title="Permalink to this heading"></a></h2>
+<p>The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space.
+The functions handling the substrate creation are in <code class="docutils literal notranslate"><span class="pre">`tool_create_substrate.py`</span></code>.</p>
+<p>For a plane wave superposition, the substrate is defined by a suitable set of wave vectors, where the number of vectors defines the symmetry and length of vectors defines the spacing [1].</p>
+<p>For a lattice of wells, the substrate is defined by the shape parameters of the well and the lattice vectors [2-5]. This substrate can be decorated with a lattice basis.</p>
+<p>The parameters are specified in a JSON file.
+See Example/0-Substrate_types.ipynb for details.</p>
+</section>
+<section id="cluster">
+<h2>Cluster<a class="headerlink" href="#cluster" title="Permalink to this heading"></a></h2>
+<p>The cluster is defined as a collection of points (optionally decorate with a basis) belonging to a given lattice.
+For convenience, there are functions returning clusters in regular shapses, e.g. rectangles, hexagons, circles, etc.
+Using the <a class="reference external" href="https://shapely.readthedocs.io/en/stable/">Shapely package</a>, clusters of arbitrary shapes (e.g. imaged in experiments) can be created.
+The functions handling the substrate creation are in <code class="docutils literal notranslate"><span class="pre">`tool_create_substrate.py`</span></code>.</p>
+<p>See example/1-Cluster_creation.ipynb for details.</p>
+</section>
+<section id="static-maps">
+<h2>Static Maps<a class="headerlink" href="#static-maps" title="Permalink to this heading"></a></h2>
+<p>See example/2-Cluster_on_substrate.ipynb for details on the following functions.</p>
+<section id="translations">
+<h3>Translations<a class="headerlink" href="#translations" title="Permalink to this heading"></a></h3>
+<p>To explore the energy landscape of an adsorbate over a substrate as a function of the CM at fixed orientation, see <code class="docutils literal notranslate"><span class="pre">`static_trasl_map.py`</span></code></p>
+</section>
+<section id="rotations">
+<h3>Rotations<a class="headerlink" href="#rotations" title="Permalink to this heading"></a></h3>
+<p>To explore the energy landscape of an adsorbate over a substrate as a function of the imposed rotation <span class="math notranslate nohighlight">\(\theta\)</span>, at fixed CM, see <code class="docutils literal notranslate"><span class="pre">`static_roto_map.py`</span></code></p>
+</section>
+<section id="roto-translations">
+<h3>Roto-translations<a class="headerlink" href="#roto-translations" title="Permalink to this heading"></a></h3>
+<p>To search for the global minimum of an adosrbate, one needs to combine rotations and translation, and locate the energy minimum in the <span class="math notranslate nohighlight">\((x_\mathrm{cm}, y_\mathrm{cm}, \theta)\)</span> space. See <code class="docutils literal notranslate"><span class="pre">`static_rototrasl_map.py`</span></code> for details.</p>
+</section>
+</section>
+<section id="dynamics-maps">
+<h2>Dynamics Maps<a class="headerlink" href="#dynamics-maps" title="Permalink to this heading"></a></h2>
+<p>To go beyond rigid maps, there are two essential tools: compute the minimum energy path between two minimum or perform a molecular dynamics calculation under given translational and rotational drives <span class="math notranslate nohighlight">\((F_x, F_y, \tau)\)</span>.</p>
+<section id="barrier-finding">
+<h3>Barrier finding<a class="headerlink" href="#barrier-finding" title="Permalink to this heading"></a></h3>
+<p>The barrier between two points in the configurational space <span class="math notranslate nohighlight">\((x_\mathrm{cm}, y_\mathrm{cm})\)</span> at fixed orientation can be estimated be the string algorithm [6], similar to the NEB methods.
+The ideal can be summarised like this: imagine the potential energy to be a hill landscape. Place a string between two points of the landscape and let it relax. The string would relax downhill until the gradient on the string vanishes, i.e. the string layes on the pass between the valleys and below the peaks.</p>
+<p>See example/3-Barrier_from_stirng.ipynb</p>
+</section>
+<section id="molecular-dynamics">
+<h3>Molecular dynamics<a class="headerlink" href="#molecular-dynamics" title="Permalink to this heading"></a></h3>
+<p>The script <code class="docutils literal notranslate"><span class="pre">`MD_rigid_rototrasl.py`</span></code> solve the equation of motion for the center of mass and orientation of the cluster in the overdamped regime (no interial term).</p>
+<p>See example/molecular_dynamics for an example of a system depinning under a constant force and torque.</p>
+<section id="equations-of-motion">
+<h4>Equations of motion<a class="headerlink" href="#equations-of-motion" title="Permalink to this heading"></a></h4>
+<p>In the overdamped limit, the equation of motion are the following first order equations:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\gamma_{t} \frac{d\mathbf{r}}{dt} = (\mathbf{F}_{ext} - \nabla U)\\\gamma_{r} \frac{d\theta}{dt} = (\tau_{ext} - \frac{dU}{d\theta})\end{aligned}\end{align} \]</div>
+<p>The dissipation constants of the CM for a cluster of <span class="math notranslate nohighlight">\(N\)</span> particles are linked the “particle-like” damping constant <span class="math notranslate nohighlight">\(\gamma\)</span> by
+<span class="math notranslate nohighlight">\(\gamma_t = N \gamma\)</span>
+and
+<span class="math notranslate nohighlight">\(\gamma_r = \gamma \sum_i r_i^2\)</span>, where <span class="math notranslate nohighlight">\(r_i\)</span> is the position of the <span class="math notranslate nohighlight">\(i\)</span>-th particle with respect to the center of mass.</p>
+<p>In this picture energy is not conserved (fully dissipated in the Langevin bath between successive timesteps) and the value of the dissipation constant <span class="math notranslate nohighlight">\(\gamma\)</span> effectively sets how quickly the time flows.
+Thus by lowering <span class="math notranslate nohighlight">\(\gamma\)</span> one can “speed up” the simulations and match timescales similar to experiments.</p>
+</section>
+</section>
+</section>
+<section id="units">
+<h2>Units<a class="headerlink" href="#units" title="Permalink to this heading"></a></h2>
+<p>The model can be ragarded as adimensional.</p>
+<dl class="simple">
+<dt>A coherent set of units useful to compare with experimental colloidal system is:</dt><dd><ul class="simple">
+<li><p>energy in zJ</p></li>
+<li><p>length in <span class="math notranslate nohighlight">\(\mu\mathrm{m}\)</span></p></li>
+<li><p>mass in fKg</p></li>
+</ul>
+</dd>
+<dt>From which follows:</dt><dd><ul class="simple">
+<li><p>force in fN</p></li>
+<li><p>torque in fN <span class="math notranslate nohighlight">\(\cdot \mu \mathrm{m}\)</span></p></li>
+<li><p>time in ms</p></li>
+<li><p>translational damping constant <span class="math notranslate nohighlight">\(\gamma\)</span> in fKg/m</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Vanossi, Andrea, Nicola Manini, and Erio Tosatti. “Static and Dynamic Friction in Sliding Colloidal Monolayers.” Proceedings of the National Academy of Sciences 109, no. 41 (October 9, 2012): 16429–33. <a class="reference external" href="https://doi.org/10.1073/pnas.1213930109">https://doi.org/10.1073/pnas.1213930109</a>.</p></li>
+<li><p>Panizon, Emanuele, Andrea Silva, Xin Cao, Jin Wang, Clemens Bechinger, Andrea Vanossi, Erio Tosatti, and Nicola Manini. “Frictionless Nanohighways on Crystalline Surfaces.” Nanoscale 15, no. 3 (2023): 1299–1316. <a class="reference external" href="https://doi.org/10.1039/D2NR04532J">https://doi.org/10.1039/D2NR04532J</a>.</p></li>
+<li><p>Cao, Xin, Andrea Silva, Emanuele Panizon, Andrea Vanossi, Nicola Manini, Erio Tosatti, and Clemens Bechinger. “Moiré-Pattern Evolution Couples Rotational and Translational Friction at Crystalline Interfaces.” Physical Review X 12, no. 2 (June 15, 2022): 021059. <a class="reference external" href="https://doi.org/10.1103/PhysRevX.12.021059">https://doi.org/10.1103/PhysRevX.12.021059</a>.</p></li>
+<li><p>Cao, Xin, Emanuele Panizon, Andrea Vanossi, Nicola Manini, and Clemens Bechinger. “Orientational and Directional Locking of Colloidal Clusters Driven across Periodic Surfaces.” Nature Physics 15, no. 8 (August 2019): 776–80. <a class="reference external" href="https://doi.org/10.1038/s41567-019-0515-7">https://doi.org/10.1038/s41567-019-0515-7</a>.</p></li>
+<li><p>Cao, Xin, Emanuele Panizon, Andrea Vanossi, Nicola Manini, Erio Tosatti, and Clemens Bechinger. “Pervasive Orientational and Directional Locking at Geometrically Heterogeneous Sliding Interfaces.” Physical Review E 103, no. 1 (January 13, 2021): 012606. <a class="reference external" href="https://doi.org/10.1103/PhysRevE.103.012606">https://doi.org/10.1103/PhysRevE.103.012606</a>.</p></li>
+<li><p>E, Weinan, Weiqing Ren, and Eric Vanden-Eijnden. “Simplified and Improved String Method for Computing the Minimum Energy Paths in Barrier-Crossing Events.” The Journal of Chemical Physics 126, no. 16 (April 28, 2007): 164103. <a class="reference external" href="https://doi.org/10.1063/1.2720838">https://doi.org/10.1063/1.2720838</a>.</p></li>
+</ol>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Superlubric interface detector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Superlubric interface design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Andrea Silva.</p>
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

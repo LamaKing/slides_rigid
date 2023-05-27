@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Put a cluster on a substrate &mdash; MD_rigid 0.1 documentation</title>
+  <title>Put a cluster on a substrate &mdash; SLIDE 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
@@ -18,9 +18,13 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Barrier" href="3-Barrier_from_stirng.html" />
+    <link rel="prev" title="Cluster creation" href="1-Cluster_creation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +36,8 @@
           
           
           <a href="index.html" class="icon icon-home">
-            MD_rigid
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,7 +47,33 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0-Substrate_types.html">Substrates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1-Cluster_creation.html">Cluster creation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Put a cluster on a substrate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Define-the-system">Define the system</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Substrate">Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Cluster">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Snapshots">Snapshots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Translational-landscape-driver">Translational landscape driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-the-four-quantities-calculated">Plot the four quantities calculated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Rotational-landscape-driver">Rotational landscape driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Roto-trasl-map">Roto-trasl map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Visualise">Visualise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="3-Barrier_from_stirng.html">Barrier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-Scaling_laws.html">Scaling laws of translational static friction</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
@@ -52,7 +83,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">MD_rigid</a>
+          <a href="index.html">SLIDE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -60,6 +91,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="examples.html">Examples</a></li>
       <li class="breadcrumb-item active">Put a cluster on a substrate</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/2-Cluster_on_substrate.ipynb.txt" rel="nofollow"> View page source</a>
@@ -363,7 +395,7 @@ Cluster circle of size N=571
 <section id="Translational-landscape-driver">
 <h2>Translational landscape driver<a class="headerlink" href="#Translational-landscape-driver" title="Permalink to this heading"></a></h2>
 <p>From a single snapshot of the cluster at a given position, we can check the energy landscape on the CM as a function of translations in x, y (at fixed misalignemet). This involves defining a suitable grid, preferibly coherent with the symmetry, translate the cluster, compute the energy and repeat, while keeping track of this all.</p>
-<p>There’s a small script that wrap this process: <code class="docutils literal notranslate"><span class="pre">static_traslmap</span></code>. It takes as input the start point in terms of the lattice vectors (<code class="docutils literal notranslate"><span class="pre">da11</span></code>, <code class="docutils literal notranslate"><span class="pre">da21</span></code> as in start from the point <img class="math" src="_images/math/1aee15c398cda5a7c608af8a17617242cc6b3617.png" alt="(x_0, y_0) = d_{a_{1},1} \mathbf{a}_1 + da_{a_{2},1} \mathbf{a}_2"/>), the end points and how many division along each direciton (<code class="docutils literal notranslate"><span class="pre">nbin</span></code>). The lattice vectors are given in terms of the <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.png" alt="S"/> matrix. The cluster is passed as numpy array of positions. The substrate energy is computed by passing the wrapper
+<p>There’s a small script that wrap this process: <code class="docutils literal notranslate"><span class="pre">static_traslmap</span></code>. It takes as input the start point in terms of the lattice vectors (<code class="docutils literal notranslate"><span class="pre">da11</span></code>, <code class="docutils literal notranslate"><span class="pre">da21</span></code> as in start from the point <span class="math notranslate nohighlight">\((x_0, y_0) = d_{a_{1},1} \mathbf{a}_1 + da_{a_{2},1} \mathbf{a}_2\)</span>), the end points and how many division along each direciton (<code class="docutils literal notranslate"><span class="pre">nbin</span></code>). The lattice vectors are given in terms of the <span class="math notranslate nohighlight">\(S\)</span> matrix. The cluster is passed as numpy array of positions. The substrate energy is computed by passing the wrapper
 the energy function and its inputs</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -669,12 +701,15 @@ Cluster size N=571 Minimum energy E=-60.27 at theta=0.90909 x,y=0, 0.581. Torque
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1-Cluster_creation.html" class="btn btn-neutral float-left" title="Cluster creation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3-Barrier_from_stirng.html" class="btn btn-neutral float-right" title="Barrier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Andrea Silva.</p>
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

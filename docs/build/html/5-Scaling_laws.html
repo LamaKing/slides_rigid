@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaling laws of translational static friction &mdash; SLIDE 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules" href="modules.html" />
+    <link rel="prev" title="Barrier" href="3-Barrier_from_stirng.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0-Substrate_types.html">Substrates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1-Cluster_creation.html">Cluster creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-Cluster_on_substrate.html">Put a cluster on a substrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-Barrier_from_stirng.html">Barrier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scaling laws of translational static friction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Commensurate">Commensurate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Misaligned">Misaligned</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plot-the-different-scalings">Plot the different scalings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SLIDE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">Scaling laws of translational static friction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/5-Scaling_laws.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Scaling-laws-of-translational-static-friction">
+<h1>Scaling laws of translational static friction<a class="headerlink" href="#Scaling-laws-of-translational-static-friction" title="Permalink to this heading"></a></h1>
+<p>Now that we understand how to model a system, we can ask some interesting question about it.</p>
+<p>This example deals with a central problem of nanoscale friction: how does the static friction of a crystalline interface scales with the size of the contact?</p>
+<p>In order to answer this question (within our approximations!), we need combine the previous examples and compute the quantity of interest (the maximum force opposing sliding) for a set of clusters of increasing size.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+
+<span class="c1"># Substrate</span>
+<span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">calc_matrices_bvect</span>
+<span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">particle_en_gaussian</span><span class="p">,</span> <span class="n">calc_en_gaussian</span>
+<span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">substrate_from_params</span>
+
+<span class="c1"># Cluster</span>
+<span class="kn">from</span> <span class="nn">tool_create_cluster</span> <span class="kn">import</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">cluster_from_params</span>
+
+<span class="c1"># Energy landcape as a function of translation</span>
+<span class="kn">from</span> <span class="nn">static_trasl_map</span> <span class="kn">import</span> <span class="n">static_traslmap</span>
+<span class="c1"># Energy landcape as a function of rotation</span>
+<span class="kn">from</span> <span class="nn">static_roto_map</span> <span class="kn">import</span> <span class="n">static_rotomap</span>
+<span class="c1"># Energy landcape as a function of roto-translation</span>
+<span class="kn">from</span> <span class="nn">static_rototrasl_map</span> <span class="kn">import</span> <span class="n">static_rototraslmap</span>
+
+<span class="c1"># Misc</span>
+<span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">gaussian</span><span class="p">,</span> <span class="n">get_ks</span>
+<span class="kn">from</span> <span class="nn">misc</span> <span class="kn">import</span> <span class="n">get_brillouin_zone_2d</span><span class="p">,</span> <span class="n">plot_BZ2d</span><span class="p">,</span> <span class="n">plot_UC</span><span class="p">,</span> <span class="n">plt_cosmetic</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho</span> <span class="o">=</span>  <span class="mi">1</span><span class="c1">#1+1/50 # Mismatch (if substrate spacing fixed to 1). Put 1 to test commensurate.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mismatch rho=</span><span class="si">%.5g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">rho</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># --- SUBSTRATE ---</span>
+    <span class="s1">&#39;sub_basis&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="s1">&#39;b1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;b2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;well_shape&#39;</span><span class="p">:</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">,</span>
+    <span class="c1"># --- CLUSTER ---</span>
+    <span class="s1">&#39;a1&#39;</span><span class="p">:</span> <span class="n">rho</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;a2&#39;</span><span class="p">:</span> <span class="n">rho</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">]),</span> <span class="c1"># triangular lattice</span>
+    <span class="s1">&#39;cl_basis&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="c1"># no basis</span>
+    <span class="s1">&#39;cluster_shape&#39;</span><span class="p">:</span> <span class="s1">&#39;circle&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;N1&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="s1">&#39;theta&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;pos_cm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># Start in the &quot;obvious&quot; position, move and rotate later</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Orientation theta=</span><span class="si">%.5g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Mismatch rho=1
+Orientation theta=0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">]]])])</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">u_inv</span> <span class="o">=</span> <span class="n">calc_matrices_bvect</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">])</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">u_inv</span><span class="o">.</span><span class="n">T</span> <span class="c1"># Lattice matrix</span>
+
+<span class="n">pen_func</span><span class="p">,</span> <span class="n">en_func</span><span class="p">,</span> <span class="n">en_inputs</span> <span class="o">=</span> <span class="n">substrate_from_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">150</span>
+<span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">150</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="p">(</span><span class="n">pp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">pp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">en</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">pen_func</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">en_inputs</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axE</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="c1"># fig.suptitle(title)</span>
+<span class="n">plt_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;tab:gray&#39;</span><span class="p">,</span> <span class="s1">&#39;lw&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;fill&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Energy</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">axE</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">p</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">en</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(x,y)$&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axE</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;well_shape&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Sin&#39;</span><span class="p">:</span> <span class="n">plot_BZ2d</span><span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">get_brillouin_zone_2d</span><span class="p">(</span><span class="n">S</span><span class="p">),</span><span class="n">plt_params</span><span class="p">)</span>
+<span class="c1">#axE.legend(loc=&#39;upper right&#39;)</span>
+<span class="n">axE</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+<span class="n">axE</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+<span class="n">axE</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">axE</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axE</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/5-Scaling_laws_4_0.png" src="_images/5-Scaling_laws_4_0.png" />
+</div>
+</div>
+<p>Shortcut to plot the energy map</p>
+<p>Plot the energy, forces and torque at each size. !! If the size set is dense, this would restuls many images !!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_map</span><span class="p">():</span>
+    <span class="c1">#fig, ((axE, axFx), (axFy, axtau)) = plt.subplots(2,2, dpi=300, sharex=True, sharey=True, figsize=(8,6))</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">,</span> <span class="n">axtau</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;tab:gray&#39;</span><span class="p">,</span> <span class="s1">&#39;lw&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;fill&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1"># Size of points</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+    <span class="c1"># Plot limits</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span>
+
+    <span class="c1"># Energy</span>
+    <span class="c1"># norm = Normalize(-N,0)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">axE</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">enmap</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(x,y)$&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;well_shape&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Sin&#39;</span><span class="p">:</span> <span class="n">plot_BZ2d</span><span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">get_brillouin_zone_2d</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">plt_params</span><span class="p">)</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; b1&#39;</span><span class="p">)</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; b2&#39;</span><span class="p">)</span>
+    <span class="c1">#axE.legend()</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axE</span><span class="p">)</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">axE</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1">#-------------------------</span>
+
+    <span class="c1"># Force along x</span>
+    <span class="n">cside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="n">cside</span><span class="p">,</span> <span class="n">cside</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">axFx</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;PiYG&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$F_x(x,y)$&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axFx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;well_shape&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Sin&#39;</span><span class="p">:</span> <span class="n">plot_BZ2d</span><span class="p">(</span><span class="n">axFx</span><span class="p">,</span> <span class="n">get_brillouin_zone_2d</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">plt_params</span><span class="p">)</span>
+    <span class="n">axFx</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+    <span class="n">axFx</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFx</span><span class="p">)</span>
+    <span class="n">axFx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">axFx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1">#-------------------------</span>
+
+    <span class="c1"># Force along y</span>
+    <span class="n">cside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="n">cside</span><span class="p">,</span> <span class="n">cside</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">axFy</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;PiYG&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$F_y(x,y)$&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axFy</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;well_shape&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Sin&#39;</span><span class="p">:</span> <span class="n">plot_BZ2d</span><span class="p">(</span><span class="n">axFy</span><span class="p">,</span> <span class="n">get_brillouin_zone_2d</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">plt_params</span><span class="p">)</span>
+    <span class="n">axFy</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+    <span class="n">axFy</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFy</span><span class="p">)</span>
+    <span class="n">axFy</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">axFy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="c1">#-------------------------</span>
+
+    <span class="c1"># Torque</span>
+    <span class="n">cside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">taumap</span><span class="p">))</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="n">cside</span><span class="p">,</span> <span class="n">cside</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">axtau</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">taumap</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\tau(x,y)$&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axtau</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;well_shape&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Sin&#39;</span><span class="p">:</span> <span class="n">plot_BZ2d</span><span class="p">(</span><span class="n">axtau</span><span class="p">,</span> <span class="n">get_brillouin_zone_2d</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">plt_params</span><span class="p">)</span>
+    <span class="n">axtau</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+    <span class="n">axtau</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axtau</span><span class="p">)</span>
+    <span class="n">axtau</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">axtau</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="c1">#-------------------------</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="c1">#plt.show()</span>
+    <span class="c1">#print(&#39;-&#39;*80, &#39;\n&#39;)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">,</span> <span class="n">axtau</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Commensurate">
+<h2>Commensurate<a class="headerlink" href="#Commensurate" title="Permalink to this heading"></a></h2>
+<p>Start by computing the static friction in the commensurate (aligned) case.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selected sizes</span>
+<span class="n">Nls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="c1"># Linear range</span>
+<span class="n">Nls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Log-spaced range</span>
+<span class="n">Nls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span> <span class="c1"># sizes make sense only as integers</span>
+<span class="n">Nls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Nls</span><span class="p">)</span> <span class="c1"># in case we have duplicates</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup arrays</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Fsx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Fsc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">iNl</span><span class="p">,</span> <span class="n">cNl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Nls</span><span class="p">):</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;N1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cNl</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;N2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cNl</span>
+
+    <span class="c1"># Create the cluster</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">cluster_from_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># store the number of particles</span>
+
+    <span class="k">if</span> <span class="n">iNl</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3i%%</span><span class="s1">)On </span><span class="si">%10s</span><span class="s1"> cluster of size N=</span><span class="si">%4i</span><span class="s1"> (lattice side Nl=</span><span class="si">%4i</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">iNl</span><span class="o">/</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cluster_shape&#39;</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">cNl</span><span class="p">))</span>
+
+    <span class="c1"># It&#39;s more convenient to return a cluster in the origin, then shift and rotate outside of the function</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pos_cm&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Compute</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">static_traslmap</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;da11&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;da12&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                 <span class="s2">&quot;da21&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;da22&quot;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+                                 <span class="s2">&quot;nbin&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                                 <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="n">S</span><span class="p">,</span> <span class="s1">&#39;en_params&#39;</span><span class="p">:</span> <span class="n">en_inputs</span><span class="p">},</span>
+                           <span class="n">en_func</span><span class="p">,</span> <span class="n">log_propagate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Separate the output data into components</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">enmap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">Fmap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">Fmapn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Fmap</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># norm of forces</span>
+    <span class="n">taumap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span>
+
+    <span class="c1"># Store the results for the current size</span>
+    <span class="n">Ns</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span>
+    <span class="n">Fsx</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># static friction along x</span>
+    <span class="n">Fsc</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Fmapn</span><span class="p">)</span> <span class="c1"># static friction as max force</span>
+
+    <span class="n">plot_flg</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">plot_flg</span><span class="p">:</span>
+        <span class="c1"># Show 2D map</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">,</span> <span class="n">axtau</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Fmapn</span><span class="p">)],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="c1"># Show along x only</span>
+        <span class="c1">#plt.plot(pp[:,0], Fmap[:,0], label=&#39;N=%i&#39; % N)</span>
+        <span class="c1">#plt.plot(pp[np.argmax(Fmap[:,0]),0], Fsx[iNl], &#39;o&#39;)</span>
+        <span class="c1">#plt.xlabel(r&#39;$x$&#39;)</span>
+        <span class="c1">#plt.ylabel(r&#39;$F_x$&#39;)</span>
+        <span class="c1">#plt.legend()</span>
+<span class="c1">#plt.show()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done in </span><span class="si">%i</span><span class="s1">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  0%)On     circle cluster of size N=  87 (lattice side Nl=  10)
+ 10%)On     circle cluster of size N= 151 (lattice side Nl=  13)
+ 20%)On     circle cluster of size N= 237 (lattice side Nl=  16)
+ 30%)On     circle cluster of size N= 363 (lattice side Nl=  20)
+ 40%)On     circle cluster of size N= 605 (lattice side Nl=  26)
+ 50%)On     circle cluster of size N= 979 (lattice side Nl=  33)
+ 60%)On     circle cluster of size N=1603 (lattice side Nl=  42)
+ 70%)On     circle cluster of size N=2539 (lattice side Nl=  53)
+ 80%)On     circle cluster of size N=4069 (lattice side Nl=  67)
+ 90%)On     circle cluster of size N=6529 (lattice side Nl=  85)
+Done in 36s
+</pre></div></div>
+</div>
+</section>
+<section id="Misaligned">
+<h2>Misaligned<a class="headerlink" href="#Misaligned" title="Permalink to this heading"></a></h2>
+<p>Now rotate the cluster and compute the incommensurate (misaligned) case</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1">#degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Orientation theta=</span><span class="si">%.5g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Orientation theta=1.5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup arrays</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Fsx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Fsm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">iNl</span><span class="p">,</span> <span class="n">cNl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Nls</span><span class="p">):</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;N1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cNl</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;N2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cNl</span>
+
+    <span class="c1"># Create the cluster</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">cluster_from_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># store the number of particles</span>
+
+    <span class="k">if</span> <span class="n">iNl</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%3i%%</span><span class="s1">)On </span><span class="si">%10s</span><span class="s1"> cluster of size N=</span><span class="si">%4i</span><span class="s1"> (lattice side Nl=</span><span class="si">%4i</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">iNl</span><span class="o">/</span><span class="n">Nls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cluster_shape&#39;</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">cNl</span><span class="p">))</span>
+
+    <span class="c1"># It&#39;s more convenient to return a cluster in the origin, then shift and rotate outside of the function</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pos_cm&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Compute the energy, forces and torque maps within the unit cell for the current size</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">static_traslmap</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;da11&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;da12&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                 <span class="s2">&quot;da21&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;da22&quot;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+                                 <span class="s2">&quot;nbin&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                                 <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="n">S</span><span class="p">,</span> <span class="s1">&#39;en_params&#39;</span><span class="p">:</span> <span class="n">en_inputs</span><span class="p">},</span>
+                           <span class="n">en_func</span><span class="p">,</span> <span class="n">log_propagate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Separate the output data into components</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">enmap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">Fmap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">Fmapn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Fmap</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># norm of forces</span>
+    <span class="n">taumap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">5</span><span class="p">]</span>
+
+    <span class="c1"># Store the results for the current size</span>
+    <span class="n">Ns</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span>
+    <span class="n">Fsx</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Fmap</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># static friction along x</span>
+    <span class="n">Fsm</span><span class="p">[</span><span class="n">iNl</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Fmapn</span><span class="p">)</span> <span class="c1"># static friction as max force</span>
+
+    <span class="n">plot_flg</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">plot_flg</span><span class="p">:</span>
+        <span class="c1"># Show 2D map</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">,</span> <span class="n">axtau</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot_map</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">,</span> <span class="n">axFy</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">pp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Fmapn</span><span class="p">)],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="c1"># Show along x only</span>
+        <span class="c1">#plt.plot(pp[:,0], Fmap[:,0], label=&#39;N=%i&#39; % N)</span>
+        <span class="c1">#plt.plot(pp[np.argmax(Fmap[:,0]),0], Fsx[iNl], &#39;o&#39;)</span>
+        <span class="c1">#plt.xlabel(r&#39;$x$&#39;)</span>
+        <span class="c1">#plt.ylabel(r&#39;$F_x$&#39;)</span>
+        <span class="c1">#plt.legend()</span>
+<span class="c1">#plt.show()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done in </span><span class="si">%i</span><span class="s1">s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  0%)On     circle cluster of size N=  87 (lattice side Nl=  10)
+ 10%)On     circle cluster of size N= 151 (lattice side Nl=  13)
+ 20%)On     circle cluster of size N= 237 (lattice side Nl=  16)
+ 30%)On     circle cluster of size N= 363 (lattice side Nl=  20)
+ 40%)On     circle cluster of size N= 605 (lattice side Nl=  26)
+ 50%)On     circle cluster of size N= 979 (lattice side Nl=  33)
+ 60%)On     circle cluster of size N=1603 (lattice side Nl=  42)
+ 70%)On     circle cluster of size N=2539 (lattice side Nl=  53)
+ 80%)On     circle cluster of size N=4069 (lattice side Nl=  67)
+ 90%)On     circle cluster of size N=6529 (lattice side Nl=  85)
+Done in 42s
+</pre></div></div>
+</div>
+</section>
+<section id="Plot-the-different-scalings">
+<h2>Plot the different scalings<a class="headerlink" href="#Plot-the-different-scalings" title="Permalink to this heading"></a></h2>
+<p>Now that we have generated the data, we can plot the computed friction and compare it to the expected scaling.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">Fsc</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;commensurate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">Fsm</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;incommensurate&#39;</span><span class="p">)</span>
+<span class="c1"># Scaling laws</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="p">(</span><span class="n">Fsc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">Ns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">Ns</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\propto N$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="p">(</span><span class="n">Fsm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">Ns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span><span class="o">*</span><span class="n">Ns</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\propto \sqrt</span><span class="si">{N}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="c1"># Cosmetics</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$N$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$F_{\mathrm</span><span class="si">{s}</span><span class="s1">}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/5-Scaling_laws_14_0.png" src="_images/5-Scaling_laws_14_0.png" />
+</div>
+</div>
+<p>As expected, in the commensurate case the friction <span class="math notranslate nohighlight">\(F_\mathrm{s}\)</span> scales <em>linearly</em> with the size: each particle sits at the bottom of a potential well and each experience the same maximum force when the cluster is translated.</p>
+<p>In the incommensurate (misaligned) case, the friction <span class="math notranslate nohighlight">\(F_\mathrm{s}\)</span> scales <em>sublinearly</em> with the size [1]: each particles sit in a sligthly different point of substrate potential and experience a difference force. As the cluster is translated, these forces cancel each other and the net force felt by the cluster grows slower than for a commensurate interface. The non-monotonic behaviour is linked to the number of complete <a class="reference external" href="https://en.wikipedia.org/wiki/Moiré_pattern">moiré tiles</a>
+fitting in the cluster, which control the compensation effect [2,3]. This is the <a class="reference external" href="https://en.wikipedia.org/wiki/Superlubricity">structural superlubrcity</a> effect [1,4,5,6].</p>
+<p>[1] Dietzel, Dirk, Michael Feldmann, Udo D. Schwarz, Harald Fuchs, and André Schirmeisen. “Scaling Laws of Structural Lubricity.” Physical Review Letters 111, no. 23 (December 2, 2013): 235502. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.111.235502">https://doi.org/10.1103/PhysRevLett.111.235502</a>.</p>
+<p>[2] Koren, E., and U. Duerig. “Moiré Scaling of the Sliding Force in Twisted Bilayer Graphene.” Physical Review B 94, no. 4 (July 5, 2016): 045401. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.94.045401">https://doi.org/10.1103/PhysRevB.94.045401</a>.</p>
+<p>[3] Panizon, Emanuele, Andrea Silva, Xin Cao, Jin Wang, Clemens Bechinger, Andrea Vanossi, Erio Tosatti, and Nicola Manini. “Frictionless Nanohighways on Crystalline Surfaces.” Nanoscale 15, no. 3 (2023): 1299–1316. <a class="reference external" href="https://doi.org/10.1039/D2NR04532J">https://doi.org/10.1039/D2NR04532J</a>.</p>
+<p>[4] Dienwiebel, Martin, Gertjan S. Verhoeven, Namboodiri Pradeep, Joost W. M. Frenken, Jennifer A. Heimberg, and Henny W. Zandbergen. “Superlubricity of Graphite.” Physical Review Letters 92, no. 12 (March 24, 2004): 126101. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.92.126101">https://doi.org/10.1103/PhysRevLett.92.126101</a>.</p>
+<p>[5] Cihan, Ebru, Semran İpek, Engin Durgun, and Mehmet Z. Baykara. “Structural Lubricity under Ambient Conditions.” Nature Communications 7, no. 1 (June 28, 2016): 12055. <a class="reference external" href="https://doi.org/10.1038/ncomms12055">https://doi.org/10.1038/ncomms12055</a>.</p>
+<p>[6] Vanossi, Andrea, Clemens Bechinger, and Michael Urbakh. “Structural Lubricity in Soft and Hard Matter Systems.” Nature Communications 11, no. 1 (September 16, 2020): 4657. <a class="reference external" href="https://doi.org/10.1038/s41467-020-18429-1">https://doi.org/10.1038/s41467-020-18429-1</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3-Barrier_from_stirng.html" class="btn btn-neutral float-left" title="Barrier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

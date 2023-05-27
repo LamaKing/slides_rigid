@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Superlubric interface design &mdash; MD_rigid 0.1 documentation</title>
+  <title>Superlubric interface design &mdash; SLIDE 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,6 +17,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -32,7 +34,8 @@
           
           
           <a href="#" class="icon icon-home">
-            MD_rigid
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,6 +47,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
@@ -53,7 +57,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">MD_rigid</a>
+          <a href="#">SLIDE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -75,16 +79,72 @@
 <section id="superlubric-interface-design">
 <h1>Superlubric interface design<a class="headerlink" href="#superlubric-interface-design" title="Permalink to this heading"></a></h1>
 <p>Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
-The adsorbate is treated as a rigid body at a given orientation <img class="math" src="_images/math/8a87f04e7d7cca18343c084cceca5237fae62491.png" alt="\theta"/> and center of mass (CM) position <img class="math" src="_images/math/c02e904a9f00d7eb7e1685d8ac640ba43ea5e10d.png" alt="x_\mathrm{cm}, y_\mathrm{cm}"/>.</p>
+The adsorbate is treated as a rigid body at a given orientation <span class="math notranslate nohighlight">\(\theta\)</span> and center of mass (CM) position <span class="math notranslate nohighlight">\(x_\mathrm{cm}, y_\mathrm{cm}\)</span>.</p>
 <p>This package is a collection of functions implementing the above physical system and automating routines usually needed to study the static, dynamics and scaling laws of friction at nanoscale interfaces.
 This software was developed at SISSA, Trieste, Italy in the group of Prof.
 Erio Tosatti and Andrea Vanossi and based on the experiments by Xin Cao and Clemens Bechinger at Univeristy of Konstanz, Germany.
-For any question/support contanct <a class="reference external" href="mailto:ansilva&#37;&#52;&#48;sissa&#46;it">Andrea Silva</a></p>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h2>
+For any question/support contanct <a class="reference external" href="mailto:ansilva&#37;&#52;&#48;sissa&#46;it">Andrea Silva</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#substrate">Substrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#cluster">Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#static-maps">Static Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#translations">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#rotations">Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#roto-translations">Roto-translations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#dynamics-maps">Dynamics Maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#barrier-finding">Barrier finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#molecular-dynamics">Molecular dynamics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#units">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0-Substrate_types.html">Substrates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0-Substrate_types.html#Benchmark-substrate-potentials:-different-wells-and-symmetries">Benchmark substrate potentials: different wells and symmetries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0-Substrate_types.html#Lattice-substrate">Lattice substrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0-Substrate_types.html#Plane-wave-substrate">Plane wave substrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0-Substrate_types.html#Plot">Plot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="1-Cluster_creation.html">Cluster creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Set-up-lattice-and-size">Set up lattice and size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Single-shape">Single shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Do-all-shapes">Do all shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Test-loading-from-params">Test loading from params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Load-from-POSCAR">Load from POSCAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="1-Cluster_creation.html#Cluster-from-Polygon-shape">Cluster from Polygon shape</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="2-Cluster_on_substrate.html">Put a cluster on a substrate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Define-the-system">Define the system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Cluster">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Snapshots">Snapshots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Translational-landscape-driver">Translational landscape driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Rotational-landscape-driver">Rotational landscape driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-Cluster_on_substrate.html#Roto-trasl-map">Roto-trasl map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="3-Barrier_from_stirng.html">Barrier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="3-Barrier_from_stirng.html#Substrate">Substrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3-Barrier_from_stirng.html#Cluster">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3-Barrier_from_stirng.html#Translation-landscape">Translation landscape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3-Barrier_from_stirng.html#id1">Barrier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-Scaling_laws.html">Scaling laws of translational static friction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5-Scaling_laws.html#Commensurate">Commensurate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5-Scaling_laws.html#Misaligned">Misaligned</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5-Scaling_laws.html#Plot-the-different-scalings">Plot the different scalings</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tools">Tools</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tool_create_substrate.html">Substrate</a></li>
@@ -108,7 +168,6 @@ For any question/support contanct <a class="reference external" href="mailto:ans
 </ul>
 </div>
 </section>
-</section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
 <ul class="simple">
@@ -128,7 +187,7 @@ For any question/support contanct <a class="reference external" href="mailto:ans
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Andrea Silva.</p>
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Substrates &mdash; MD_rigid 0.1 documentation</title>
+  <title>Substrates &mdash; SLIDE 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
@@ -18,9 +18,13 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cluster creation" href="1-Cluster_creation.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +36,8 @@
           
           
           <a href="index.html" class="icon icon-home">
-            MD_rigid
+            SLIDE
+              <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,7 +47,33 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Substrates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Benchmark-substrate-potentials:-different-wells-and-symmetries">Benchmark substrate potentials: different wells and symmetries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Lattice-substrate">Lattice substrate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Substrate-symmetry">Substrate symmetry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Basis">Basis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Well-shape">Well shape</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Plane-wave-substrate">Plane wave substrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plot">Plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Grid-and-compute-energetics">Grid and compute energetics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2D-maps">2D maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#1D-lines">1D lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Init-from-param">Init from param</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="1-Cluster_creation.html">Cluster creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-Cluster_on_substrate.html">Put a cluster on a substrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-Barrier_from_stirng.html">Barrier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-Scaling_laws.html">Scaling laws of translational static friction</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
@@ -52,7 +83,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">MD_rigid</a>
+          <a href="index.html">SLIDE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -60,6 +91,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="examples.html">Examples</a></li>
       <li class="breadcrumb-item active">Substrates</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/0-Substrate_types.ipynb.txt" rel="nofollow"> View page source</a>
@@ -75,7 +107,7 @@
 <section id="Benchmark-substrate-potentials:-different-wells-and-symmetries">
 <h2>Benchmark substrate potentials: different wells and symmetries<a class="headerlink" href="#Benchmark-substrate-potentials:-different-wells-and-symmetries" title="Permalink to this heading"></a></h2>
 <p>The clusters move on a rigid substrate potential. This is defined in terms of a lattice or in terms of a superposition of plane waves (so it can also be a quasi-crystal).</p>
-<p>For plane waves, the number and realtive phase of waves controls the symmetry and a parameter <img class="math" src="_images/math/0ad7b30534898f253002222f998f38001e604648.png" alt="\epsilon"/> the amplitude.</p>
+<p>For plane waves, the number and realtive phase of waves controls the symmetry and a parameter <span class="math notranslate nohighlight">\(\epsilon\)</span> the amplitude.</p>
 <p>In case of a lattice, the repeated unit, or <span class="math">\textit{well}</span>, can be an arbitrary function. We do not put any restriction on it, but one would usually assume the substrate is a continous function. Hence to avoid discontinuities, the well function should go to zero at the cell border.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -482,12 +514,15 @@ Sin potential: no matrix S, u, u_inv
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="1-Cluster_creation.html" class="btn btn-neutral float-right" title="Cluster creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Andrea Silva.</p>
+    <p>&#169; Copyright GNU under General Public License v3.0.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
