@@ -20,6 +20,7 @@ For any question/support contanct `Andrea Silva <ansilva@sissa.it>`_.
    :maxdepth: 3
 
    intro
+   installation
    examples
    modules
 
