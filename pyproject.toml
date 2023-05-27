@@ -11,3 +11,7 @@ authors = [
 description = "Statics and dynamics of 2D rigid cluster over a substrate. The degrees of freedom are the CM position and orientation."
 readme = "README.md"
 requires-python = ">=3.10"
+
+[project.urls]
+"Homepage" = "https://rigid-cluster.readthedocs.io/en/latest/tool_create_cluster.html"
+"Source" = "https://github.com/LamaKing/slide_rigid"
