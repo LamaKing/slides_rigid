@@ -16,14 +16,11 @@ This software was developed at SISSA, Trieste, Italy in the group of Prof.
 Erio Tosatti and Andrea Vanossi and based on the experiments by Xin Cao and Clemens Bechinger at Univeristy of Konstanz, Germany.
 For any question/support contanct `Andrea Silva <ansilva@sissa.it>`_.
 
-Contents
---------
-
 .. toctree::
    :maxdepth: 3
 
    intro
-   .. examples
+   examples
    modules
 
 

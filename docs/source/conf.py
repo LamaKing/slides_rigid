@@ -18,8 +18,8 @@ source_suffix = ['.rst', '.md']
 
 # -- Project information -----------------------------------------------------
 
-project = 'MD_rigid'
-copyright = '2023, Andrea Silva'
+project = 'SLIDE'
+copyright = 'GNU under General Public License v3.0'
 author = 'Andrea Silva'
 release = '0.1'
 
@@ -84,7 +84,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-
+html_logo = "logo_html.png"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
