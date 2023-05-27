@@ -49,7 +49,7 @@
  ],
  "epsilon": 1,
  "well_shape": "sin",
- "Nsteps": 20000,
+ "Nsteps": 40000,
  "cluster_np": "pos.npy",
  "T": 0.40698,
  "seed": 12345,
