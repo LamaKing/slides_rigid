@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "example_package_YOUR_USERNAME_HERE"
+name = "SLIDE"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Andrea Silva", email="ansilva@sissa.it" },
 ]
-description = "A small example package"
+description = "Statics and dynamics of 2D rigid cluster over a substrate. The degrees of freedom are the CM position and orientation."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
