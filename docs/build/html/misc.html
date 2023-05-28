@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; SLIDE 0.1.0 documentation</title>
+  <title>Miscellanous &mdash; SLIDE 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -23,7 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Transition state barrier" href="dynamic.html" /> 
+    <link rel="next" title="Static Translation" href="static_maps.html" />
+    <link rel="prev" title="String method" href="string_method.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,17 +52,22 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="modules.html#tools">Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#static">Static</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#dynamics">Dynamics</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="modules.html#miscellanous">Miscellanous</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">get_brillouin_zone_2d()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#misc.handle_run"><code class="docutils literal notranslate"><span class="pre">handle_run()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#misc.plot_BZ2d"><code class="docutils literal notranslate"><span class="pre">plot_BZ2d()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#misc.plot_UC"><code class="docutils literal notranslate"><span class="pre">plot_UC()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#misc.plt_cosmetic"><code class="docutils literal notranslate"><span class="pre">plt_cosmetic()</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#tools">Tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tool_create_substrate.html">Substrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tool_create_cluster.html">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string_method.html">String method</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Miscellanous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#misc.get_brillouin_zone_2d"><code class="docutils literal notranslate"><span class="pre">get_brillouin_zone_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#misc.handle_run"><code class="docutils literal notranslate"><span class="pre">handle_run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#misc.plot_BZ2d"><code class="docutils literal notranslate"><span class="pre">plot_BZ2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#misc.plot_UC"><code class="docutils literal notranslate"><span class="pre">plot_UC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#misc.plt_cosmetic"><code class="docutils literal notranslate"><span class="pre">plt_cosmetic()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#static">Static</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dynamics">Dynamics</a></li>
 </ul>
 </li>
 </ul>
@@ -81,7 +87,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Miscellanous</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/misc.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,7 +97,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <span class="target" id="module-misc"></span><dl class="py function">
+  <section id="module-misc">
+<span id="miscellanous"></span><h1>Miscellanous<a class="headerlink" href="#module-misc" title="Permalink to this heading"></a></h1>
+<dl class="py function">
 <dt class="sig sig-object py" id="misc.get_brillouin_zone_2d">
 <span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_brillouin_zone_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#misc.get_brillouin_zone_2d" title="Permalink to this definition"></a></dt>
 <dd><p>Generate the Brillouin Zone of a given 2D cell. The BZ is the Wigner-Seitz cell
@@ -136,12 +144,14 @@ Optionally dictionary with plotting parameters.</p>
 <dd><p>Adjust ax for plotting: lines at x=0 y=0, set xylabels and aspect as equal</p>
 </dd></dl>
 
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dynamic.html" class="btn btn-neutral float-left" title="Transition state barrier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="string_method.html" class="btn btn-neutral float-left" title="String method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="static_maps.html" class="btn btn-neutral float-right" title="Static Translation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

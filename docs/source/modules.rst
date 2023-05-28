@@ -12,6 +12,7 @@ Tools
    tool_create_substrate
    tool_create_cluster
    string_method
+   misc
 
 Static
 --------
@@ -26,9 +27,3 @@ Dynamics
    :maxdepth: 2
 
    dynamic
-
-
-Miscellanous
--------------
-.. toctree::
-   misc

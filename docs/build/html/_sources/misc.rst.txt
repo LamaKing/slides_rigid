@@ -1,3 +1,6 @@
+Miscellanous
+=============
+
 .. automodule:: misc
    :members:
    :undoc-members:
