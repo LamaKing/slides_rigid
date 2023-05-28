@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Molecular Dynamics of rigid cluster &mdash; SLIDE 0.1.0 documentation</title>
+  <title>Transition state barrier &mdash; SLIDE 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -23,7 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Static Rotation and Translation" href="static_rototrasl_map.html" /> 
+    <link rel="next" title="&lt;no title&gt;" href="misc.html" />
+    <link rel="prev" title="Static Translation" href="static_maps.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,12 +55,17 @@
 <li class="toctree-l2"><a class="reference internal" href="modules.html#tools">Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#static">Static</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html#dynamics">Dynamics</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Molecular Dynamics of rigid cluster</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Transition state barrier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#static_barrier_string.static_barrier"><code class="docutils literal notranslate"><span class="pre">static_barrier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-MD_rigid_rototrasl">Molecular Dynamics of rigid cluster</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#MD_rigid_rototrasl.MD_rigid"><code class="docutils literal notranslate"><span class="pre">MD_rigid()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#miscellanous">Miscellanous</a></li>
 </ul>
 </li>
 </ul>
@@ -79,9 +85,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
-      <li class="breadcrumb-item active">Molecular Dynamics of rigid cluster</li>
+      <li class="breadcrumb-item active">Transition state barrier</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/md_rigid_rototrasl.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/dynamic.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -89,7 +95,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-MD_rigid_rototrasl">
+  <section id="module-static_barrier_string">
+<span id="transition-state-barrier"></span><h1>Transition state barrier<a class="headerlink" href="#module-static_barrier_string" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="static_barrier_string.static_barrier">
+<span class="sig-prename descclassname"><span class="pre">static_barrier_string.</span></span><span class="sig-name descname"><span class="pre">static_barrier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_en_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_propagate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#static_barrier_string.static_barrier" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the transition state barrier of a rigid cluster between two points of the substrate.</p>
+<p>The barrier is computed using the string algorithm [DOI: 10.1063/1.2720838].</p>
+<p>Inputs:
+- pos: position of particles in rigid cluster
+- inputs: dictionary defining the syste. Must contain the start (p0) and end (p1) of the initial path. Optionally, the number of points in the string (Npt=100) and number of iterations (Nsteps=3000)</p>
+<p>Returns the positions of the relaxed path, along with energy, force and torque evaluated along it.</p>
+</dd></dl>
+
+</section>
+<section id="module-MD_rigid_rototrasl">
 <span id="molecular-dynamics-of-rigid-cluster"></span><h1>Molecular Dynamics of rigid cluster<a class="headerlink" href="#module-MD_rigid_rototrasl" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="MD_rigid_rototrasl.MD_rigid">
@@ -107,7 +127,8 @@ Info about run are written in name+’info.json’</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="static_rototrasl_map.html" class="btn btn-neutral float-left" title="Static Rotation and Translation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="static_maps.html" class="btn btn-neutral float-left" title="Static Translation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="misc.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

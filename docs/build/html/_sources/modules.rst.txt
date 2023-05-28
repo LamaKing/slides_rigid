@@ -1,6 +1,9 @@
 Modules
 ========
 
+.. note::
+   The functions in ``snips/`` are snippets that might be useful to some but are not documented here as they address minor or technical aspects not relevant for the whole package.
+
 Tools
 --------
 .. toctree::
@@ -15,14 +18,17 @@ Static
 .. toctree::
    :maxdepth: 2
 
-   static_trasl_map
-   static_roto_map
-   static_barrier_string
-   static_rototrasl_map
+   static_maps
 
 Dynamics
 --------
 .. toctree::
    :maxdepth: 2
 
-   md_rigid_rototrasl
+   dynamic
+
+
+Miscellanous
+-------------
+.. toctree::
+   misc

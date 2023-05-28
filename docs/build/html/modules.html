@@ -59,14 +59,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#static">Static</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="static_trasl_map.html">Static Translation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_roto_map.html">Static Rotation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_barrier_string.html">Transition state barrier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_rototrasl_map.html">Static Rotation and Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html">Static Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html#module-static_roto_map">Static Rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html#module-static_rototrasl_map">Static Rotation and Translation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dynamics">Dynamics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="md_rigid_rototrasl.html">Molecular Dynamics of rigid cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html">Transition state barrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html#module-MD_rigid_rototrasl">Molecular Dynamics of rigid cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#miscellanous">Miscellanous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="misc.html"><code class="docutils literal notranslate"><span class="pre">get_brillouin_zone_2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.handle_run"><code class="docutils literal notranslate"><span class="pre">handle_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plot_BZ2d"><code class="docutils literal notranslate"><span class="pre">plot_BZ2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plot_UC"><code class="docutils literal notranslate"><span class="pre">plot_UC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plt_cosmetic"><code class="docutils literal notranslate"><span class="pre">plt_cosmetic()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -99,6 +107,10 @@
              
   <section id="modules">
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The functions in <code class="docutils literal notranslate"><span class="pre">snips/</span></code> are snippets that might be useful to some but are not documented here as they address minor or technical aspects not relevant for the whole package.</p>
+</div>
 <section id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -155,20 +167,16 @@
 <h2>Static<a class="headerlink" href="#static" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="static_trasl_map.html">Static Translation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="static_trasl_map.html#static_trasl_map.static_traslmap"><code class="docutils literal notranslate"><span class="pre">static_traslmap()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_maps.html">Static Translation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static_maps.html#static_trasl_map.static_traslmap"><code class="docutils literal notranslate"><span class="pre">static_traslmap()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="static_roto_map.html">Static Rotation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="static_roto_map.html#static_roto_map.static_rotomap"><code class="docutils literal notranslate"><span class="pre">static_rotomap()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_maps.html#module-static_roto_map">Static Rotation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static_maps.html#static_roto_map.static_rotomap"><code class="docutils literal notranslate"><span class="pre">static_rotomap()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="static_barrier_string.html">Transition state barrier</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="static_barrier_string.html#static_barrier_string.static_barrier"><code class="docutils literal notranslate"><span class="pre">static_barrier()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="static_rototrasl_map.html">Static Rotation and Translation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="static_rototrasl_map.html#static_rototrasl_map.static_rototraslmap"><code class="docutils literal notranslate"><span class="pre">static_rototraslmap()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="static_maps.html#module-static_rototrasl_map">Static Rotation and Translation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static_maps.html#static_rototrasl_map.static_rototraslmap"><code class="docutils literal notranslate"><span class="pre">static_rototraslmap()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -178,10 +186,26 @@
 <h2>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="md_rigid_rototrasl.html">Molecular Dynamics of rigid cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="md_rigid_rototrasl.html#MD_rigid_rototrasl.MD_rigid"><code class="docutils literal notranslate"><span class="pre">MD_rigid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic.html">Transition state barrier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamic.html#static_barrier_string.static_barrier"><code class="docutils literal notranslate"><span class="pre">static_barrier()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic.html#module-MD_rigid_rototrasl">Molecular Dynamics of rigid cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamic.html#MD_rigid_rototrasl.MD_rigid"><code class="docutils literal notranslate"><span class="pre">MD_rigid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="miscellanous">
+<h2>Miscellanous<a class="headerlink" href="#miscellanous" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc.html"><code class="docutils literal notranslate"><span class="pre">get_brillouin_zone_2d()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html#misc.handle_run"><code class="docutils literal notranslate"><span class="pre">handle_run()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html#misc.plot_BZ2d"><code class="docutils literal notranslate"><span class="pre">plot_BZ2d()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html#misc.plot_UC"><code class="docutils literal notranslate"><span class="pre">plot_UC()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html#misc.plt_cosmetic"><code class="docutils literal notranslate"><span class="pre">plt_cosmetic()</span></code></a></li>
 </ul>
 </div>
 </section>

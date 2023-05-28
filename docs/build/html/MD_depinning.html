@@ -93,7 +93,7 @@
 <h1>MD of a depinning transition<a class="headerlink" href="#md-of-a-depinning-transition" title="Permalink to this heading"></a></h1>
 <p>The previous examples dealt more with static properties of the interface.
 The <code class="docutils literal notranslate"><span class="pre">MD_rigid_rototrasl.py</span></code> module allows you to integrate the overdamped equation of motion (see introduction) and follow the trajectory of a cluster in time. See the example folder molecular_dynamics for more details and inputs.</p>
-<p>An example of interesting time evolution is the depinning of a cluster under the action of a torque and force applied on its center of mass (CM).
+<p>An example of interesting time evolution is the depinning of a cluster under the action of external drivers, like a torque and a force applied on its center of mass (CM).
 If these drivers are above a critical threshold, the cluster will depin and starting to translate and rotate.</p>
 <p>The animation below shows the evolution of the cluster during the depining, with each particle coloured according to its potential energy. The applied torque is in the counter-clockwise direction and the force along <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <figure class="align-default" id="id1">
@@ -109,13 +109,15 @@ If these drivers are above a critical threshold, the cluster will depin and star
 <p><span class="caption-text">Energy per particle as a function of time</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p>As the drivers in this example are not much larger than the critical value, the motion is characterised by an <em>intermittent</em> dynamics reminiscent of <a class="reference external" href="https://en.wikipedia.org/wiki/Stick-slip_phenomenon">stick-slip</a> (strincly speaking, there cannot be stick-slip in a rigid system under a constant force), as highlight by the evolution of the <span class="math notranslate nohighlight">\(x\)</span> coordinate of the CM below.</p>
+<p>As the drivers in this example are not much larger than the critical value, the motion is characterised by an <em>intermittent</em> dynamics reminiscent of <a class="reference external" href="https://en.wikipedia.org/wiki/Stick-slip_phenomenon">stick-slip</a> (strincly speaking, there cannot be stick-slip in a rigid system under a constant force), as highlight by the evolution of the <span class="math notranslate nohighlight">\(x\)</span> coordinate of the CM below.
+In the limit of large drives, the cluster will move in an almost-smooth fashion, as the force imposed by the substrate will be negligible.</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/x_trajectory.pdf"><img alt="_images/x_trajectory.pdf" src="_images/x_trajectory.pdf" style="height: 400px;" /></a>
 <figcaption>
 <p><span class="caption-text">Position of the cluster CM along x as a function of time</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
+<p>Note how the amplitude of the “slips” is not constant, but decreases with time, toward an almost smooth sliding. This is due to the coupling of rotation and translation: as the cluster rotates the depth of the energy landscape decreases, thus making the applied force effectively larger, closer to the smooth sliding limit.</p>
 </section>
 
 

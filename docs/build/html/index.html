@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Superlubric interface design &mdash; SLIDE 0.1.0 documentation</title>
+  <title>SuperLubric Interface DEsign &mdash; SLIDE 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -69,7 +69,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Superlubric interface design</li>
+      <li class="breadcrumb-item active">SuperLubric Interface DEsign</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,11 +81,17 @@
              
   <img alt="_images/logo.png" src="_images/logo.png" />
 <section id="superlubric-interface-design">
-<h1>Superlubric interface design<a class="headerlink" href="#superlubric-interface-design" title="Permalink to this heading"></a></h1>
+<h1>SuperLubric Interface DEsign<a class="headerlink" href="#superlubric-interface-design" title="Permalink to this heading"></a></h1>
 <p>Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
 The adsorbate is treated as a rigid body at a given orientation <span class="math notranslate nohighlight">\(\theta\)</span> and center of mass (CM) position <span class="math notranslate nohighlight">\(x_\mathrm{cm}, y_\mathrm{cm}\)</span>.</p>
 <p>This package is a collection of functions implementing the above physical system and automating routines usually needed to study the static, dynamics and scaling laws of friction at nanoscale interfaces.
-This software was developed at SISSA, Trieste, Italy in the group of Prof.
+SLIDE is not object oriented, but mainly based on function. This choice stems from the will to keep the software as simple as possible, easy to extend and allow single parts of the code to be easily integrated in other projects.
+The two main components of this package are <code class="docutils literal notranslate"><span class="pre">tool_create_substrate.py</span></code> and <code class="docutils literal notranslate"><span class="pre">tool_create_cluster.py</span></code>.
+The first module allows to create a set of rigid substrates of different symmetry and Fourier complexity.
+The second module provides a set of function to create finite clusters of different shapes.
+The <code class="docutils literal notranslate"><span class="pre">static_[...].py</span></code>  modules combine substrate and cluster to compute static energy landscapes, providing a convenient and automated interface for systematic explorations. The command line interface provides a simple parallelisation over clusters of different sizes, ideal to compute scaling laws.
+The <code class="docutils literal notranslate"><span class="pre">MD_rigid_rototrasl.py</span></code> module performes Euler intergration of the overdamped Langeving equation.</p>
+<p>This software was developed at SISSA, Trieste, Italy in the group of Prof.
 Erio Tosatti and Andrea Vanossi and based on the experiments by Xin Cao and Clemens Bechinger at Univeristy of Konstanz, Germany.
 For any question/support contanct <a class="reference external" href="mailto:ansilva&#37;&#52;&#48;sissa&#46;it">Andrea Silva</a>.</p>
 <div class="toctree-wrapper compound">
@@ -163,14 +169,22 @@ For any question/support contanct <a class="reference external" href="mailto:ans
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#static">Static</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="static_trasl_map.html">Static Translation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_roto_map.html">Static Rotation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_barrier_string.html">Transition state barrier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="static_rototrasl_map.html">Static Rotation and Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html">Static Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html#module-static_roto_map">Static Rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="static_maps.html#module-static_rototrasl_map">Static Rotation and Translation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules.html#dynamics">Dynamics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="md_rigid_rototrasl.html">Molecular Dynamics of rigid cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html">Transition state barrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic.html#module-MD_rigid_rototrasl">Molecular Dynamics of rigid cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#miscellanous">Miscellanous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="misc.html"><code class="docutils literal notranslate"><span class="pre">get_brillouin_zone_2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.handle_run"><code class="docutils literal notranslate"><span class="pre">handle_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plot_BZ2d"><code class="docutils literal notranslate"><span class="pre">plot_BZ2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plot_UC"><code class="docutils literal notranslate"><span class="pre">plot_UC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="misc.html#misc.plt_cosmetic"><code class="docutils literal notranslate"><span class="pre">plt_cosmetic()</span></code></a></li>
 </ul>
 </li>
 </ul>
