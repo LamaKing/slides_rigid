@@ -1,7 +1,7 @@
 
 ![logo](https://github.com/LamaKing/slides_rigid/assets/19472018/64a5e7f6-0195-4a56-9244-1e1347629003)
 
-# SuperLubric Interface DEsign
+# SuperLubric Interface DESigner
 
 Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
 The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $x_\mathrm{cm}, y_\mathrm{cm}$

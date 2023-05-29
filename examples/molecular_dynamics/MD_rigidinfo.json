@@ -6,7 +6,7 @@
  "brandr": 120.88097418643912,
  "N": 361,
  "theta_max": 1e+30,
- "print_skip": 200,
+ "print_skip": 500,
  "min_Nsteps": 1e+30,
  "avglen": 100,
  "omega_min": -1,
