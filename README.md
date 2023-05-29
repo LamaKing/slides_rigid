@@ -3,7 +3,7 @@
 
 # SuperLubric Interface DESigner
 
-Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
+SLIDES computes the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
 The adsorbate is treated as a rigid body at a given orientation $\theta$ and center of mass (CM) position $x_\mathrm{cm}, y_\mathrm{cm}$
 
 This package is a collection of functions implementing the above physical system and automating routines usually needed to study the static, dynamics and scaling laws of friction at nanoscale interfaces.
