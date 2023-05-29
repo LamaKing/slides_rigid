@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "SLIDES"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Andrea Silva", email="ansilva@sissa.it" },
 ]
-description = "Statics and dynamics of 2D rigid cluster over a substrate. The degrees of freedom are the CM position and orientation."
+description = "SuperLubric Interface DESigner: statics and dynamics of 2D rigid cluster over a substrate."
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["simulation", "physics", "friction", "nanoscale-molecular-dynamics"]
