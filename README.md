@@ -1,5 +1,5 @@
 
-![logo](https://github.com/LamaKing/slide_rigid/assets/19472018/0c249a09-ec85-442b-9c57-5fb7b12e69b8)
+![logo](https://github.com/LamaKing/slides_rigid/assets/19472018/64a5e7f6-0195-4a56-9244-1e1347629003)
 
 # SuperLubric Interface DEsign
 
