@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "SLIDE"
-version = "0.0.6"
+name = "SLIDES"
+version = "0.0.1"
 authors = [
   { name="Andrea Silva", email="ansilva@sissa.it" },
 ]
@@ -23,4 +23,4 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://rigid-cluster.readthedocs.io/en/latest/index.html"
-"Source" = "https://github.com/LamaKing/slide_rigid"
+"Source" = "https://github.com/LamaKing/slides_rigid"

@@ -1,7 +1,7 @@
 Installation
 =============
 
-SLIDE is written in python3. The following packages are required:
+SLIDES is written in python3. The following packages are required:
 
 - nbsphinx==0.9.2
 - sphinx-rtd-theme==1.2.1
@@ -14,15 +14,15 @@ SLIDE is written in python3. The following packages are required:
 From PIP
 ---------
 
-The easiest way to install SLIDE is via `pip <https://pypi.org/project/pip/>`_, see the project page `here <https://test.pypi.org/project/SLIDE/>`_.
+The easiest way to install SLIDES is via `pip <https://pypi.org/project/pip/>`_, see the project page `here <https://test.pypi.org/project/SLIDES/>`_.
 To install type the following in your command line
 
 .. code-block:: console
 
-   pip install -i https://test.pypi.org/simple/ SLIDE
+   pip install -i https://test.pypi.org/simple/ SLIDES
 
 From source
 ------------
 
 You can get the source code by cloning our `git repository <https://github.com/LamaKing/slide_rigid/tree/main>`_
-SLIDE is fully written in python, so no compiling is needed.
+SLIDES is fully written in python, so no compiling is needed.
