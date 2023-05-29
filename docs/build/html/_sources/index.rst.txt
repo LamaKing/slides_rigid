@@ -5,7 +5,7 @@
 
 .. image:: logo.png
 
-SuperLubric Interface DESign
+SuperLubric Interface DESigner
 ==============================
 
 Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.

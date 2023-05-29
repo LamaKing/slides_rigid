@@ -114,7 +114,10 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
 
 <span class="c1"># Substrate</span>
 <span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">calc_matrices_bvect</span>
@@ -262,7 +265,7 @@ Cluster circle of size N=571
 <h2>Snapshots<a class="headerlink" href="#Snapshots" title="Permalink to this heading"></a></h2>
 <p>Move and rotate the cluster at some position and compute the energy/force componentes/torque. Plot the resulting distribution on the cluster, to appreciate what is going on.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">theta</span><span class="p">,</span> <span class="n">cm</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span>      <span class="mf">2.5</span><span class="p">,</span>     <span class="mi">4</span><span class="p">,</span>       <span class="p">],</span>
@@ -292,7 +295,6 @@ Cluster circle of size N=571
     <span class="n">axE</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
     <span class="n">axE</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
     <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axE</span><span class="p">)</span>
-    <span class="n">axE</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="c1">#-------------------------</span>
 
     <span class="c1"># Force along x</span>
@@ -305,7 +307,6 @@ Cluster circle of size N=571
     <span class="n">axFx</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
     <span class="n">axFx</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
     <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFx</span><span class="p">)</span>
-    <span class="n">axFx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">axFx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="c1">#-------------------------</span>
 
@@ -319,6 +320,7 @@ Cluster circle of size N=571
     <span class="n">axFy</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
     <span class="n">axFy</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
     <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFy</span><span class="p">)</span>
+    <span class="n">axFy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="c1">#-------------------------</span>
 
     <span class="c1"># Torque</span>
@@ -424,7 +426,7 @@ the energy function and its inputs</p>
 <h3>Plot the four quantities calculated<a class="headerlink" href="#Plot-the-four-quantities-calculated" title="Permalink to this heading"></a></h3>
 <p>The folowing cell is just lots of plotting options. One canvas per quantity.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fig, ((axE, axFx), (axFy, axtau)) = plt.subplots(2,2, dpi=300, sharex=True, sharey=True, figsize=(8,6))</span>
@@ -449,7 +451,7 @@ the energy function and its inputs</p>
 <span class="n">axE</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
 <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axE</span><span class="p">)</span>
 <span class="n">axE</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">axE</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">axE</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="c1">#-------------------------</span>
 
 <span class="c1"># Force along x</span>
@@ -461,8 +463,7 @@ the energy function and its inputs</p>
 <span class="n">axFx</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
 <span class="n">axFx</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
 <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFx</span><span class="p">)</span>
-<span class="n">axFx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">axFx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">axFx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="c1">#-------------------------</span>
 
 <span class="c1"># Force along y</span>
@@ -474,8 +475,8 @@ the energy function and its inputs</p>
 <span class="n">axFy</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
 <span class="n">axFy</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
 <span class="n">plt_cosmetic</span><span class="p">(</span><span class="n">axFy</span><span class="p">)</span>
+<span class="n">axFy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="n">axFy</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">axFy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y_\mathrm</span><span class="si">{cm}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="c1">#-------------------------</span>
 
 <span class="c1"># Torque</span>
@@ -591,7 +592,7 @@ Cluster size N=571 Minimum energy E=-60.27 at theta=0.90909 x,y=0, 0.581. Torque
 <h3>Visualise<a class="headerlink" href="#Visualise" title="Permalink to this heading"></a></h3>
 <p>Let’s take a look at this minimum energy configuration, shall we?</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_pos</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">thmin</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">]</span>
@@ -674,12 +675,21 @@ Cluster size N=571 Minimum energy E=-60.27 at theta=0.90909 x,y=0, 0.581. Torque
 571 -60.24721286109569
 </pre></div></div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <img alt="_images/2-Cluster_on_substrate_23_1.png" src="_images/2-Cluster_on_substrate_23_1.png" />
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--------------------------------------------------------------------------------
+
+</pre></div></div>
 </div>
 <p>Does this make sense as a minimum-energy configuration?</p>
 </section>

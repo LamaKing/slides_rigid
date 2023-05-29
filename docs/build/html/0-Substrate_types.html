@@ -118,7 +118,11 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrices defining substrate periodicity</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Matrices defining substrate periodicity</span>
 <span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">calc_matrices_triangle</span><span class="p">,</span> <span class="n">calc_matrices_square</span><span class="p">,</span> <span class="n">calc_matrices_bvect</span>
 <span class="c1"># Substrate types (particles-wise functions)</span>
 <span class="kn">from</span> <span class="nn">tool_create_substrate</span> <span class="kn">import</span> <span class="n">particle_en_gaussian</span><span class="p">,</span> <span class="n">particle_en_sin</span><span class="p">,</span> <span class="n">particle_en_tanh</span>
@@ -326,8 +330,8 @@ Sin potential: no matrix S, u, u_inv
 <h3>2D maps<a class="headerlink" href="#2D-maps" title="Permalink to this heading"></a></h3>
 <p>First plot the energy density, the two components of the force density field.</p>
 <p>We can also plot the torque density field with repsect to the origin. Just remember that for an infinite layer like this it makes not so much sense.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">((</span><span class="n">axE</span><span class="p">,</span> <span class="n">axFx</span><span class="p">),</span> <span class="p">(</span><span class="n">axFy</span><span class="p">,</span> <span class="n">axtau</span><span class="p">))</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -385,6 +389,13 @@ Sin potential: no matrix S, u, u_inv
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/0-Substrate_types_20_0.png" src="_images/0-Substrate_types_20_0.png" />
 </div>
 </div>
 </section>

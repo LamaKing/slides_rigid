@@ -113,7 +113,11 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tool_create_cluster</span> <span class="kn">import</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">add_basis</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">tool_create_cluster</span> <span class="kn">import</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">add_basis</span>
 <span class="c1"># Various shapes</span>
 <span class="kn">from</span> <span class="nn">tool_create_cluster</span> <span class="kn">import</span> <span class="n">create_cluster_circle</span><span class="p">,</span> <span class="n">create_cluster_hex</span><span class="p">,</span> <span class="n">create_cluster_rect</span><span class="p">,</span> <span class="n">create_cluster_tri</span><span class="p">,</span> <span class="n">create_cluster_special</span>
 <span class="kn">from</span> <span class="nn">tool_create_cluster</span> <span class="kn">import</span> <span class="n">create_input_hex</span><span class="p">,</span> <span class="n">load_input_hex</span>

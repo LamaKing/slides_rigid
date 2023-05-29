@@ -17,6 +17,10 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "import numpy as np\n",
+    "from numpy import sqrt\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
     "from tool_create_cluster import rotate, add_basis\n",
     "# Various shapes\n",
     "from tool_create_cluster import create_cluster_circle, create_cluster_hex, create_cluster_rect, create_cluster_tri, create_cluster_special\n",

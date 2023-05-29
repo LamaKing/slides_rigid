@@ -16,7 +16,7 @@ The animation below shows the evolution of the cluster during the depining, with
 
 From the output file, we can also plot the evolution of the total energy of the cluster as a function of time.
 
-.. figure:: _static/energy.pdf
+.. figure:: _static/energy.png
            :height: 400px
 
            Energy per particle as a function of time
@@ -25,7 +25,7 @@ From the output file, we can also plot the evolution of the total energy of the 
 As the drivers in this example are not much larger than the critical value, the motion is characterised by an *intermittent* dynamics reminiscent of `stick-slip <https://en.wikipedia.org/wiki/Stick-slip_phenomenon>`_ (strincly speaking, there cannot be stick-slip in a rigid system under a constant force), as highlight by the evolution of the :math:`x` coordinate of the CM below.
 In the limit of large drives, the cluster will move in an almost-smooth fashion, as the force imposed by the substrate will be negligible.
 
-.. figure:: _static/x_trajectory.pdf
+.. figure:: _static/x_trajectory.png
            :height: 400px
 
            Position of the cluster CM along x as a function of time

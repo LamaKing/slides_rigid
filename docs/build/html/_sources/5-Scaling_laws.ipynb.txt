@@ -22,6 +22,9 @@
    "outputs": [],
    "source": [
     "from time import time\n",
+    "import numpy as np\n",
+    "from numpy import sqrt\n",
+    "import matplotlib.pyplot as plt\n",
     "from matplotlib.colors import Normalize\n",
     "\n",
     "# Substrate\n",
@@ -274,7 +277,7 @@
       " 70%)On     circle cluster of size N=2539 (lattice side Nl=  53)\n",
       " 80%)On     circle cluster of size N=4069 (lattice side Nl=  67)\n",
       " 90%)On     circle cluster of size N=6529 (lattice side Nl=  85)\n",
-      "Done in 39s\n"
+      "Done in 40s\n"
      ]
     }
    ],
@@ -384,7 +387,7 @@
       " 70%)On     circle cluster of size N=2539 (lattice side Nl=  53)\n",
       " 80%)On     circle cluster of size N=4069 (lattice side Nl=  67)\n",
       " 90%)On     circle cluster of size N=6529 (lattice side Nl=  85)\n",
-      "Done in 47s\n"
+      "Done in 44s\n"
      ]
     }
    ],
