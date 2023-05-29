@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "SLIDES"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Andrea Silva", email="ansilva@sissa.it" },
 ]
@@ -22,5 +22,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://rigid-cluster.readthedocs.io/en/latest/index.html"
+"Homepage" = "https://slides-rigid.readthedocs.io/en/latest/"
 "Source" = "https://github.com/LamaKing/slides_rigid"
