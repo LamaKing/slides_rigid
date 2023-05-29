@@ -47,7 +47,7 @@ To search for the global minimum of an adosrbate, one needs to combine rotations
 To go beyond rigid maps, there are two essential tools: compute the minimum energy path between two minimum or perform a molecular dynamics calculation under given translational and rotational drives $(F_x, F_y, \tau)$.
 
 ### Barrier finding
-The barrier between two points in the configurational space $(x_\mathrm{cm}, y_\mathrm{cm}) at fixed orientation can be estimated be the string algorithm [6], similar to the NEB methods.
+The barrier between two points in the configurational space $(x_\mathrm{cm}, y_\mathrm{cm})$ at fixed orientation can be estimated be the string algorithm [6], similar to the NEB methods.
 The ideal can be summarised like this: imagine the potential energy to be a hill landscape. Place a string between two points of the landscape and let it relax. The string would relax downhill until the gradient on the string vanishes, i.e. the string layes on the pass between the valleys and below the peaks.
 
 See example/3-Barrier_from_stirng.ipynb
