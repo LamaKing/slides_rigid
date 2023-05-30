@@ -18,10 +18,10 @@ source_suffix = ['.rst']
 
 # -- Project information -----------------------------------------------------
 
-project = 'SLIDE'
+project = 'SLIDES'
 copyright = 'GNU under General Public License v3.0'
 author = 'Andrea Silva'
-release = '0.1.0'
+release = '0.0.4'
 
 # -- General configuration ---------------------------------------------------
 # -- General configuration

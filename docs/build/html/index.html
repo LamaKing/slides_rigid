@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SuperLubric Interface DESigner &mdash; SLIDE 0.1.0 documentation</title>
+  <title>SuperLubric Interface DESigner &mdash; SLIDES 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -37,7 +37,7 @@
           
           
           <a href="#" class="icon icon-home">
-            SLIDE
+            SLIDES
               <img src="_static/logo_html.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -61,7 +61,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">SLIDE</a>
+          <a href="#">SLIDES</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -83,7 +83,11 @@
 <section id="superlubric-interface-designer">
 <h1>SuperLubric Interface DESigner<a class="headerlink" href="#superlubric-interface-designer" title="Permalink to this heading"></a></h1>
 <p>Compute the interlocking potential between a periodic substrate and a finite-size adsorbate, in the rigid approximation.
-The adsorbate is treated as a rigid body at a given orientation <span class="math notranslate nohighlight">\(\theta\)</span> and center of mass (CM) position <span class="math notranslate nohighlight">\(x_\mathrm{cm}, y_\mathrm{cm}\)</span>.</p>
+The adsorbate is treated as a rigid body with a given orientation <span class="math notranslate nohighlight">\(\theta\)</span> and center of mass (CM) position <span class="math notranslate nohighlight">\(x_\mathrm{cm}, y_\mathrm{cm}\)</span>.
+This model mimicks the basic physics of 2D materials flakes sliding over a substrate in AFM experiments, e.g. graphene on graphite, nobel gases islands on metal surfaces, and colloidal particles under external drivers, like gravity.</p>
+<p>The rigid approximation allows for treatment of large clusters approaching sizes of AFM experiments. This is of course a major approximation, and yet a reasonable one to qualitatively describe the contact between stiff materials like graphite and hBN.
+The large-scale capabilities and qualitative description, make SLIDES the perfect tool to explore interafaces at little computational cost and derive scaling laws as a function of the system paramters, e.g. cluster size or substrate potential.
+To the best of our knowledge, no such tool is available today: LAMMPS can be used for common cases for which the interaction potentials are available (e.g. graphene/hBN) and homemade ad-hoc solution are adopted elsewhere.</p>
 <p>This package is a collection of functions implementing the above physical system and automating routines usually needed to study the static, dynamics and scaling laws of friction at nanoscale interfaces.
 SLIDES is not object oriented, but mainly based on function. This choice stems from the will to keep the software as simple as possible, easy to extend and allow single parts of the code to be easily integrated in other projects.
 The two main components of this package are <code class="docutils literal notranslate"><span class="pre">tool_create_substrate.py</span></code> and <code class="docutils literal notranslate"><span class="pre">tool_create_cluster.py</span></code>.
