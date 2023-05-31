@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intro &mdash; SLIDES 0.1.0 documentation</title>
+  <title>Intro &mdash; SLIDES 0.0.4 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -67,7 +67,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#units">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#units">Units</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#colloids">Colloids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nanoscale">Nanoscale</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -164,22 +168,45 @@ Thus by lowering <span class="math notranslate nohighlight">\(\gamma\)</span> on
 </section>
 <section id="units">
 <h2>Units<a class="headerlink" href="#units" title="Permalink to this heading"></a></h2>
-<p>The model can be ragarded as adimensional.</p>
-<dl class="simple">
-<dt>A coherent set of units useful to compare with experimental colloidal system is:</dt><dd><ul class="simple">
-<li><p>energy in zJ</p></li>
+<p>No internal units conversion is performed, so the choice of a coherent set of units is left to the user.</p>
+<section id="colloids">
+<h3>Colloids<a class="headerlink" href="#colloids" title="Permalink to this heading"></a></h3>
+<p>A coherent set of units useful to compare with experimental colloidal system is:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>energy in zJ = 10 <sup>-19</sup> J</p></li>
 <li><p>length in <span class="math notranslate nohighlight">\(\mu\mathrm{m}\)</span></p></li>
 <li><p>mass in fKg</p></li>
 </ul>
-</dd>
-<dt>From which follows:</dt><dd><ul class="simple">
+</div></blockquote>
+<p>From which follows:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>force in fN</p></li>
 <li><p>torque in fN <span class="math notranslate nohighlight">\(\cdot \mu \mathrm{m}\)</span></p></li>
 <li><p>time in ms</p></li>
 <li><p>translational damping constant <span class="math notranslate nohighlight">\(\gamma\)</span> in fKg/m</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
+</section>
+<section id="nanoscale">
+<h3>Nanoscale<a class="headerlink" href="#nanoscale" title="Permalink to this heading"></a></h3>
+<p>A coherent set of units useful to compare with nanoscale experiments, e.g. AFM nanomanipulation, is:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>energy in eV = 1.602176634 x 10 <sup>-19</sup> J</p></li>
+<li><p>length in Å = 10 <sup>-10</sup> m</p></li>
+<li><p>mass in fKg</p></li>
+</ul>
+</div></blockquote>
+<p>From which follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>force in eV/Å = 1.602176634 nN</p></li>
+<li><p>time in <span class="math notranslate nohighlight">\(100 \sqrt{10/1.602176634}\)</span> ns</p></li>
+</ul>
+</div></blockquote>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>

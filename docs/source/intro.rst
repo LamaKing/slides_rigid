@@ -75,19 +75,38 @@ In this picture energy is not conserved (fully dissipated in the Langevin bath b
 Thus by lowering :math:`\gamma` one can "speed up" the simulations and match timescales similar to experiments.
 
 Units
-----------
-The model can be ragarded as adimensional.
+-------
+No internal units conversion is performed, so the choice of a coherent set of units is left to the user.
+
+Colloids
++++++++++
 
 A coherent set of units useful to compare with experimental colloidal system is:
-  - energy in zJ
-  - length in :math:`\mu\mathrm{m}`
-  - mass in fKg
+
+  * energy in zJ = 10 :sup:`-19` J
+  * length in :math:`\mu\mathrm{m}`
+  * mass in fKg
 
 From which follows:
-  - force in fN
-  - torque in fN :math:`\cdot \mu \mathrm{m}`
-  - time in ms
-  - translational damping constant :math:`\gamma` in fKg/m
+
+  * force in fN
+  * torque in fN :math:`\cdot \mu \mathrm{m}`
+  * time in ms
+  * translational damping constant :math:`\gamma` in fKg/m
+
+Nanoscale
++++++++++
+
+A coherent set of units useful to compare with nanoscale experiments, e.g. AFM nanomanipulation, is:
+
+  * energy in eV = 1.602176634 x 10 :sup:`-19` J
+  * length in Å = 10 :sup:`-10` m
+  * mass in fKg
+
+From which follows:
+
+  * force in eV/Å = 1.602176634 nN
+  * time in :math:`100 \sqrt{10/1.602176634}` ns
 
 References
 ----------

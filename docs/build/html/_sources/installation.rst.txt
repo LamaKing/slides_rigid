@@ -26,7 +26,7 @@ This will put the sources in your python path so that all the functions of this 
 From source
 ------------
 
-You can get the source code by cloning our `git repository <https://github.com/LamaKing/slide_rigid/tree/main>`_
+You can get the source code by cloning our `git repository <https://github.com/LamaKing/slide_rigid/tree/main>`_.
 SLIDES is fully written in python, so no compiling is needed.
 
-In the examples folder you will find the notebook underlying the examples shown in the documentation here. These notebooks are editable, so you can play around with different substrate, geometries and driver. Ultimately tailoring the design to your system of interest!
+In the examples folder you will find the notebook underlying the examples shown in the documentation here. These notebooks are editable, so you can play around with different substrate, geometries and driver, ultimately tailoring the design to your system of interest!

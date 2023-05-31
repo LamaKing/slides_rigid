@@ -73,10 +73,10 @@ In this picture energy is not conserved (fully dissipated in the Langevin bath b
 Thus by lowering $\gamma$ one can "speed up" the simulations and match timescales similar to experiments.
 
 ## Units
-The model can be ragarded as adimensional.
+No internal units conversion is performed, so the choice of a coherent set of units is left to the user.
 
 A coherent set of units useful to compare with experimental colloidal system [2,3] is:
-  - energy in zJ
+  - energy in zJ=10$^{-19}$ J
   - length in $\mu\mathrm{m}$
   - mass in fKg
 
@@ -85,6 +85,16 @@ From which follows:
   - torque in fN $\cdot \mu \mathrm{m}$
   - time in ms
   - translational damping constant $\gamma$ in fKg/ms
+
+
+A coherent set of units useful to compare with nanoscale experiments, e.g. AFM nanomanipulation, is:
+  - energy in eV = $1.602176634 \times 10^{-19}$ J
+  - length in $\AA = 10^{-10}$ m
+  - mass in fKg
+
+From which follows:
+  - force in eV/Å = 1.602176634 nN
+  - time in $100 \sqrt{10/1.602176634}$ ns
 
 ## References
 1. Vanossi, Andrea, Nicola Manini, and Erio Tosatti. “Static and Dynamic Friction in Sliding Colloidal Monolayers.” Proceedings of the National Academy of Sciences 109, no. 41 (October 9, 2012): 16429–33. https://doi.org/10.1073/pnas.1213930109.

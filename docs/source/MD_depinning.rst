@@ -1,4 +1,4 @@
-MD of a depinning transition
+Depinning dynamics
 ============================
 
 The previous examples dealt more with static properties of the interface.
