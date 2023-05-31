@@ -76,7 +76,7 @@ Thus by lowering $\gamma$ one can "speed up" the simulations and match timescale
 No internal units conversion is performed, so the choice of a coherent set of units is left to the user.
 
 A coherent set of units useful to compare with experimental colloidal system [2,3] is:
-  - energy in zJ=10$^{-19}$ J
+  - energy in zJ=10 $^{-19}$ J
   - length in $\mu\mathrm{m}$
   - mass in fKg
 
@@ -89,7 +89,7 @@ From which follows:
 
 A coherent set of units useful to compare with nanoscale experiments, e.g. AFM nanomanipulation, is:
   - energy in eV = $1.602176634 \times 10^{-19}$ J
-  - length in $\AA = 10^{-10}$ m
+  - length in  Å = $10^{-10}$ m
   - mass in fKg
 
 From which follows:
