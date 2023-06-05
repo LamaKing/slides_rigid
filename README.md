@@ -76,7 +76,7 @@ Thus by lowering $\gamma$ one can "speed up" the simulations and match timescale
 No internal units conversion is performed, so the choice of a coherent set of units is left to the user.
 
 A coherent set of units useful to compare with experimental colloidal system [2,3] is:
-  - energy in zJ=10 $^{-19}$ J
+  - energy in zJ=10 $^{-21}$ J
   - length in $\mu\mathrm{m}$
   - mass in fKg
 

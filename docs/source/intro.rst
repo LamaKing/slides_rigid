@@ -83,7 +83,7 @@ Colloids
 
 A coherent set of units useful to compare with experimental colloidal system is:
 
-  * energy in zJ = 10 :sup:`-19` J
+  * energy in zJ = 10 :sup:`-21` J
   * length in :math:`\mu\mathrm{m}`
   * mass in fKg
 
