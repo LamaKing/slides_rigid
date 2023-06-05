@@ -11,6 +11,9 @@ This software was developed at SISSA, Trieste, Italy in the group of Prof.
 Erio Tosatti and Andrea Vanossi and based on the experiments by Xin Cao and Clemens Bechinger at Univeristy of Konstanz, Germany.
 
 See the documentation for more details.
+[![Documentation Status](https://readthedocs.org/projects/slides-rigid/badge/?version=latest)](https://slides-rigid.readthedocs.io/en/latest/?badge=latest)
+
+
 
 ## Substrate
 The substrate is defined as a periodic function resulting from either a monocromaitc superposition of plane waves or a potential well of a given shape repeated in space.
