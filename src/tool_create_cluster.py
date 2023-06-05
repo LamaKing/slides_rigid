@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
+import sys, argparse
+from argparse import RawTextHelpFormatter
 import numpy as np
 
 """
@@ -98,9 +99,9 @@ def create_cluster_circle(input_hex, outstream=sys.stdout, X0=0, Y0=0):
 
     The 6 dimensions are for backward compatibility with EP."""
     # Load lattice
-    file = open(input_hex, 'r')
-    N1, N2, a1, a2 = load_input_hex(file)
-    file.close()
+    infile = open(input_hex, 'r')
+    N1, N2, a1, a2 = load_input_hex(infile)
+    infile.close()
     a1norm, a2norm = np.linalg.norm(a1), np.linalg.norm(a2)
 
     # Create the positions
@@ -404,10 +405,41 @@ def params_from_poscar(poscar_fname, cut_z=0):
     return params_from_ASE(ase_geom, cut_z)
 
 if __name__ == "__main__":
-    input_hex = sys.argv[1]
+
+    #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""CLI to create finite size cluster
+
+    Read an in.hex input file and create a cluster of the given shape (default circle).
+
+    Print on stdout:
+    - line 1: the number of particles
+    - line 2: the first lattice vector a1
+    - line 3: the second lattice vector a2
+    - from 4: the indeces i,j of the the current particle with position r = i*a1 + j*a2""",
+    formatter_class=RawTextHelpFormatter)
+    # Positional arguments
+    parser.add_argument('filename',
+                        type=str,
+                        help='in.hex input file. First line containes repetitions N1 N2 along first and second lattice vectors. Second line is first 2D lattice vector, third line is second 2D lattice vector.')
+    # Optional args
+    parser.add_argument('--shape', '-s',
+                        dest='clt_shape', type=str, default='circle',
+                        help='Shape of the cluster')
+    parser.add_argument('--xy',
+                        dest='xy', type=float, nargs=2, default=[0.0, 0.0],
+                        help='x,y coordinates of the center of mass')
+
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
+
+    input_hex = args.filename
     X0 = 0.0
     Y0 = 0.0
-    clt_shape = sys.argv[2]
+    clt_shape = args.clt_shape
     if clt_shape == 'circle':
         create_cluster_func = create_cluster_circle
     elif clt_shape == 'hexagon':
@@ -419,6 +451,5 @@ if __name__ == "__main__":
     else:
         raise ValueError("Shape %s not implemented" % clt_shape)
 
-    if len(sys.argv)>4:
-        X0, Y0 = sys.argv[3], sys.argv[4]
+    X0, Y0 = args.xy
     create_cluster_func(input_hex, X0=X0, Y0=Y0)

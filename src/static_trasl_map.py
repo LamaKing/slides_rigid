@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import sys, os, json, logging, multiprocessing
+import sys, os, json, logging, multiprocessing, argparse
+from argparse import RawTextHelpFormatter
 import numpy as np
 from time import time
 from functools import partial
@@ -15,10 +16,10 @@ def static_traslmap(pos, inputs, calc_en_f, name=None, log_propagate=True, debug
     Return a Nx6 array with xcm, ycm, e_pot, forces[0], forces[1], torque"""
     N = pos.shape[0]
     if name == None:
-        name = 'traslmap_N_%i' % N
+        name = 'traslmap-N_%i' % N
         out_fname = '/dev/null' # if no name is given, do not write the results to file, just return them.
     else:
-        out_fname = '%s.dat' % name
+        out_fname = '%s-N_%i.dat' % (name, N)
 
     #-------- SET UP LOGGER -------------
     # For this threads and children
@@ -28,7 +29,7 @@ def static_traslmap(pos, inputs, calc_en_f, name=None, log_propagate=True, debug
     # Adopted format: level - current function name - message. Width is fixed as visual aid.
     log_format = logging.Formatter('[%(levelname)5s - %(funcName)10s] %(message)s')
     if not log_propagate:
-        console = open('console-%s.log' % name, 'w')
+        console = open('console-%s-N_%i.log' % (name, N), 'w')
         handler = logging.StreamHandler(console)
         handler.setFormatter(log_format)
         c_log.addHandler(handler)
@@ -106,21 +107,56 @@ def static_traslmap(pos, inputs, calc_en_f, name=None, log_propagate=True, debug
 
 if __name__ == "__main__":
     t0 = time()
-    debug = False
+    #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""Compute the energy as a function of translations for different sizes
+
+    Create a clusters of different sizes and compute the energy as a function of CM translation xy at fixed misalignment angle theta.
+
+    The parameters defining the cluster and substrate are given in a JSON file.
+    The JSON input must contain all inputs to create the substrate and clusters as needed by substrate_from_params and cluster_from_params funcitons.
+    Additionally, the JSON file must contain the keys 'nbin' defining the number of division along each lattice direction to compute for each size. By default the division goes from 0 to 1 along each direction. The start and end in fratcional coordinates along each direction can be changed by adding the keywords 'da11' 'da12' and 'da21' 'da22', respectively, in the JSON file.
+
+    The output is printed on files named 'traslmap-N_<number of particles>.dat'.
+
+    The code can run in parallel different sizes.
+    """,
+    formatter_class=RawTextHelpFormatter)
+    # Positional arguments
+    parser.add_argument('filename',
+                        type=str,
+                        help='JSON input file.')
+    # Optional args
+    parser.add_argument('--Ns',
+                        dest='Ns', type=int, required=True, nargs=2,
+                        help='Start and finish sizes (in lattice repetitions, valid for both directions).')
+    parser.add_argument('--dN',
+                        dest='dN', type=int, default=1,
+                        help='size spaceing (defult=1)')
+    parser.add_argument('--np',
+                        dest='np', type=int, default=1,
+                        help='number of sizes to run in parallel (defult=1)')
+    parser.add_argument('--debug',
+                        dest='debug', type=bool, default=False,
+                        help='print debug informations')
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
 
     # -------- SET UP LOGGER -------------
     c_log = logging.getLogger('driver') # Set name identifying the logger.
     # Adopted format: level - current function name - message. Width is fixed as visual aid.
     logging.basicConfig(format='[%(levelname)5s - %(name)15s] %(message)s')
     c_log.setLevel(logging.INFO)
-    if debug: c_log.setLevel(logging.DEBUG)
+    if args.debug: c_log.setLevel(logging.DEBUG)
 
     # -------- INPUTS --------
-    with open(sys.argv[1]) as inj:
+    with open(args.filename) as inj:
         inputs = json.load(inj)
 
-    N0, N1, dN = int(sys.argv[2]), int(sys.argv[3]), 1
-    if len(sys.argv) > 4: dN = int(sys.argv[4])
+    N0, N1, dN = *args.Ns, args.dN
     c_log.info("From Nl %i to %i steps %i" % (N0, N1, dN))
 
     # -------- SUBSTRATE ENERGY --------
@@ -144,12 +180,11 @@ if __name__ == "__main__":
 
     # ------------ MULTIPROCESS POOL ---------
     # Set up system for multiprocess
-    ncpu, nworkers = os.cpu_count(), 1
-    if len(sys.argv) > 5: nworkers = int(sys.argv[5])
+    ncpu, nworkers = os.cpu_count(), args.np
     c_log.info("Running %i elements on %i processes (%i cores machine)" % (len(Nl_range), nworkers, ncpu))
 
     # Fix the all arguments a part from Nl, so that we can use pool.map
-    wrap_func = partial(static_traslmap, inputs=inputs, calc_en_f=calc_en_f, log_propagate=False, debug=debug)
+    wrap_func = partial(static_traslmap, inputs=inputs, calc_en_f=calc_en_f, name='traslmap', log_propagate=False, debug=args.debug)
 
     # Launch all simulations with Pool of workers
     c_log.debug("Starting pool")

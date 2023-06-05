@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import sys, os, json, logging
+import sys, os, json, logging, argparse
+from argparse import RawTextHelpFormatter
 import numpy as np
 from time import time
 from tool_create_cluster import create_cluster, load_cluster, rotate, calc_cluster_langevin
@@ -238,4 +239,23 @@ def MD_rigid(inputs, outstream=sys.stdout, name=None, log_propagate=False, debug
 
 # Stand-alone scripting
 if __name__ == "__main__":
-    MD_rigid(sys.argv[1:], debug=False)
+    #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""Run an MD simulations for a given cluster
+    """,
+    formatter_class=RawTextHelpFormatter)
+    # Positional arguments
+    parser.add_argument('filename',
+                        type=str,
+                        help='JSON input file.')
+    parser.add_argument('--debug',
+                        dest='debug', type=bool, default=False,
+                        help='print debug informations')
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
+
+    print(args)
+    MD_rigid([args.filename], debug=args.debug)
