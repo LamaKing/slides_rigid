@@ -21,7 +21,7 @@ source_suffix = ['.rst']
 project = 'SLIDES'
 copyright = 'GNU under General Public License v3.0'
 author = 'Andrea Silva'
-release = '0.0.5'
+release = '0.0.6'
 
 # -- General configuration ---------------------------------------------------
 # -- General configuration
