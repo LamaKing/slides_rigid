@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 
-import os, shutil, json, sys
+import os, shutil, json, sys, argparse
+from argparse import RawTextHelpFormatter
 from os.path import join as pjoin
 from time import time
 import numpy as np
 
-def get_loop_lasts(F0, F1, dF, Tau0, Tau1, dTau, thF=0, avg_len=100, method='average'):
-    """Loop over values of Tau form Tau0 to Tau1 in steps dTau
+def get_loop_lasts(F0, F1, dF, Tau0, Tau1, dTau, thF=0, avg_len=100, method='avg'):
+    """Loop over values of Tau form Tau0 to Tau1 in steps dTau and of F form F0 to F1 in steps dF
 
+    If the endpoints are equal, the script loops only on the other, assining None to the equal-end loop.
     Update config concatenates pos cm and theta between runs"""
-    # TODO: implement methods: average or max over last N frames (last frame should be obtained by len avg 1
+
     t0 = time() # Start the clock
 
     pwd =  os.environ['PWD']
     print('Working in ', pwd)
 
-    if method=='average': c_method = np.average
+    if method=='avg': c_method = np.average
     elif method=='max': c_method = np.max
     else: raise ValueError('Process method %s not implemented' % method)
 
@@ -49,15 +51,41 @@ def get_loop_lasts(F0, F1, dF, Tau0, Tau1, dTau, thF=0, avg_len=100, method='ave
     print('Done in %is (%.2fmin)' % (t1-t0, (t1-t0)/60))
 
 if __name__ == "__main__":
+    #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""Snippet to process the output of a loop over forces and/or torques
+
+    Loop over folders and output file from a loop_[...].py suites and collect the last value / average over last N values, e.g. to determine if the system is pinned or unpinned under the given drivers."""
+    )
+    # Optional args
+    parser.add_argument('--ranges', '-r',
+                        dest='fname', type=str, required=True,
+                        help='filename of JSON with ranges explore.')
+    parser.add_argument('--Navg', '-N',
+                        dest='Navg', type=int, default=1,
+                        help='frames to consider (from end backwards) for averaging/max search. Default is 1, take last only.')
+    parser.add_argument('--method',
+                        dest='method', type=str, default='avg',
+                        help='process metod average (avg) or maximum (max) over N last frames.')
+    parser.add_argument('--debug',
+                        action='store_true', dest='debug',
+                        help='show debug informations.')
+
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
+
     # -------- RANGES --------
-    with open(sys.argv[1]) as inj:
+    with open(args.fname) as inj:
         ranges = json.load(inj)
 
-    avg_len = 1 # How many frames to consider?
-    if len(sys.argv)>2: avg_len = int(sys.argv[2])
-    method = 'average' # What to extract, average or max?
-    if len(sys.argv)>3: method = sys.argv[3]
+    avg_len = args.Navg # How many frames to consider?
+    method = args.method # What to extract, average or max?
+    if method not in ['max', 'avg']: raise ValueError('Method %s not recognised (max or avg)' % method)
 
+    thF = 0 # assume driver along x
     F0, F1, dF = 0, 0, 1
     try:
         F0, F1, dF = ranges['F0'], ranges['F1'], ranges['dF']

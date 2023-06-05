@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import os, shutil, json, sys
+import os, shutil, json, sys, argparse
+from argparse import RawTextHelpFormatter
 from os.path import join as pjoin
 from time import time
 import numpy as np
@@ -38,10 +39,32 @@ def Tau_loop(Tau0, Tau1, dTau, inputs, update_conf=True):
     print('Done in %is (%.2fmin)' % (t1-t0, (t1-t0)/60))
 
 if __name__ == "__main__":
+        #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""Snippet to run a loop over torques for a given cluster""")
+
+    # Optional args
+    parser.add_argument('--input', '-i',
+                        dest='inputf', type=str, default=False,
+                        help='filename of JSON with system parameters')
+    parser.add_argument('--ranges', '-r',
+                        dest='rangesf', type=str, required=True,
+                        help='filename of JSON with range of torques')
+    parser.add_argument('--debug',
+                        action='store_true', dest='debug',
+                        help='show debug informations.')
+
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
+
     # -------- INPUTS --------
-    with open(sys.argv[1]) as inj:
+    with open(args.inputf) as inj:
         inputs = json.load(inj)
-    with open(sys.argv[2]) as inj:
+
+    with open(args.rangesf) as inj:
         ranges = json.load(inj)
 
     Tau0, Tau1, dTau = 0, 0, 1

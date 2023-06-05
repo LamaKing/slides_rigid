@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import os, shutil, json, sys
+import os, shutil, json, sys, argparse
+from argparse import RawTextHelpFormatter
 from os.path import join as pjoin
 from time import time
 import numpy as np
@@ -36,14 +37,35 @@ def F_loop(F0, F1, dF, inputs, thF=0, update_conf=True):
     print('Done in %is (%.2fmin)' % (t1-t0, (t1-t0)/60))
 
 if __name__ == "__main__":
+    #-------------------------------------------------------------------------------
+    # Argument parser
+    #-------------------------------------------------------------------------------
+    parser = argparse.ArgumentParser(description="""Snippet to run a loop over forces for a given cluster""")
+
+    # Optional args
+    parser.add_argument('--input', '-i',
+                        dest='inputf', type=str, default=False,
+                        help='filename of JSON with system parameters')
+    parser.add_argument('--ranges', '-r',
+                        dest='rangesf', type=str, required=True,
+                        help='filename of JSON with range of force')
+    parser.add_argument('--debug',
+                        action='store_true', dest='debug',
+                        help='show debug informations.')
+
+    #-------------------------------------------------------------------------------
+    # Initialize and check variables
+    #-------------------------------------------------------------------------------
+    args = parser.parse_args(sys.argv[1:])
+
     # -------- INPUTS --------
-    with open(sys.argv[1]) as inj:
+    with open(args.inputf) as inj:
         inputs = json.load(inj)
 
-    #F0, F1, dF = int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])
-    with open(sys.argv[2]) as inj:
+    with open(args.rangesf) as inj:
         ranges = json.load(inj)
 
+    thF = 0 # assume driver along x
     F0, F1, dF = 0, 0, 1
     try:
         F0, F1, dF = ranges['F0'], ranges['F1'], ranges['dF']

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Shortcut to link the source of this package to the current director
+# This should not be necessary if instelled via pip
+
 src_fld=/PATH/TO/SOURCE/OF/rigid_cluster
 src_fname=( tool_create_cluster.py tool_create_substrate.py misc.py ) # minimal
 if [[ $1 == "all" ]]
@@ -15,9 +18,9 @@ then
 fi
 
 
-echo "link from $src_fld to $PWD "; 
+echo "link from $src_fld to $PWD ";
 for i in ${src_fname[@]}
-do 
+do
         echo "linking $i"
-        ln $force_opt -s $src_fld/$i ; 
+        ln $force_opt -s $src_fld/$i ;
 done
